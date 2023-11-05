@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 98f5fb08d0d64894687308d4b78ed626
+timeCreated: 1501772650
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Plane002
+    100002: //RootNode
+    100004: Sentinel_propeller
+    100006: Bone001
+    100008: Sentinel_body
+    100010: Bone002
+    100012: Scanner
+    100014: bone root
+    100016: bone scanner
+    100018: Defensor_BackLeft_propeller
+    100020: Defensor_BackRight_propeller
+    100022: Defensor_Body
+    100024: Defensor_FrontLeft_propeller
+    100026: Defensor_frontRight_propeller
+    100028: Heavy_body
+    100030: Heavy_Leftarm
+    100032: Heavy_Leftwing
+    100034: Heavy_Leftwing_propeller
+    100036: Heavy_Reararm
+    100038: Heavy_Rearwing
+    100040: Heavy_Rearwing_propeller
+    100042: Heavy_rightarm
+    100044: Heavy_Rightwing
+    100046: Heavy_Rightwing_propeller
+    100048: Persecutor_Body
+    100050: Persecutor_LeftWing
+    100052: Persecutor_LeftWing_propeller
+    100054: Persecutor_RightWing
+    100056: Persecutor_RightWing_propeller
+    400000: Plane002
+    400002: //RootNode
+    400004: Sentinel_propeller
+    400006: Bone001
+    400008: Sentinel_body
+    400010: Bone002
+    400012: Scanner
+    400014: bone root
+    400016: bone scanner
+    400018: Defensor_BackLeft_propeller
+    400020: Defensor_BackRight_propeller
+    400022: Defensor_Body
+    400024: Defensor_FrontLeft_propeller
+    400026: Defensor_frontRight_propeller
+    400028: Heavy_body
+    400030: Heavy_Leftarm
+    400032: Heavy_Leftwing
+    400034: Heavy_Leftwing_propeller
+    400036: Heavy_Reararm
+    400038: Heavy_Rearwing
+    400040: Heavy_Rearwing_propeller
+    400042: Heavy_rightarm
+    400044: Heavy_Rightwing
+    400046: Heavy_Rightwing_propeller
+    400048: Persecutor_Body
+    400050: Persecutor_LeftWing
+    400052: Persecutor_LeftWing_propeller
+    400054: Persecutor_RightWing
+    400056: Persecutor_RightWing_propeller
+    2100000: Drone
+    2100002: scanner
+    2300000: Plane002
+    2300002: //RootNode
+    2300004: Sentinel_propeller
+    2300006: Sentinel_body
+    2300008: Scanner
+    2300010: Defensor_BackLeft_propeller
+    2300012: Defensor_BackRight_propeller
+    2300014: Defensor_Body
+    2300016: Defensor_FrontLeft_propeller
+    2300018: Defensor_frontRight_propeller
+    2300020: Heavy_body
+    2300022: Heavy_Leftarm
+    2300024: Heavy_Leftwing
+    2300026: Heavy_Leftwing_propeller
+    2300028: Heavy_Reararm
+    2300030: Heavy_Rearwing
+    2300032: Heavy_Rearwing_propeller
+    2300034: Heavy_rightarm
+    2300036: Heavy_Rightwing
+    2300038: Heavy_Rightwing_propeller
+    2300040: Persecutor_Body
+    2300042: Persecutor_LeftWing
+    2300044: Persecutor_LeftWing_propeller
+    2300046: Persecutor_RightWing
+    2300048: Persecutor_RightWing_propeller
+    3300000: Plane002
+    3300002: //RootNode
+    3300004: Sentinel_propeller
+    3300006: Sentinel_body
+    3300008: Scanner
+    3300010: Defensor_BackLeft_propeller
+    3300012: Defensor_BackRight_propeller
+    3300014: Defensor_Body
+    3300016: Defensor_FrontLeft_propeller
+    3300018: Defensor_frontRight_propeller
+    3300020: Heavy_body
+    3300022: Heavy_Leftarm
+    3300024: Heavy_Leftwing
+    3300026: Heavy_Leftwing_propeller
+    3300028: Heavy_Reararm
+    3300030: Heavy_Rearwing
+    3300032: Heavy_Rearwing_propeller
+    3300034: Heavy_rightarm
+    3300036: Heavy_Rightwing
+    3300038: Heavy_Rightwing_propeller
+    3300040: Persecutor_Body
+    3300042: Persecutor_LeftWing
+    3300044: Persecutor_LeftWing_propeller
+    3300046: Persecutor_RightWing
+    3300048: Persecutor_RightWing_propeller
+    4300000: Sentinel_body
+    4300002: Sentinel_propeller
+    4300004: Plane002
+    4300006: Scanner
+    4300008: Persecutor_Body
+    4300010: Persecutor_RightWing
+    4300012: Persecutor_RightWing_propeller
+    4300014: Persecutor_LeftWing
+    4300016: Persecutor_LeftWing_propeller
+    4300018: Heavy_body
+    4300020: Heavy_rightarm
+    4300022: Heavy_Rightwing
+    4300024: Heavy_Rightwing_propeller
+    4300026: Heavy_Leftarm
+    4300028: Heavy_Leftwing
+    4300030: Heavy_Leftwing_propeller
+    4300032: Heavy_Reararm
+    4300034: Heavy_Rearwing
+    4300036: Heavy_Rearwing_propeller
+    4300038: Defensor_Body
+    4300040: Defensor_FrontLeft_propeller
+    4300042: Defensor_BackLeft_propeller
+    4300044: Defensor_BackRight_propeller
+    4300046: Defensor_frontRight_propeller
+    7400000: Idle
+    7400002: Start moving
+    7400004: Move
+    7400006: Stop moving
+    7400008: Hit
+    7400010: Scan
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    autoMapExternalMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 1
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Start moving
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Move
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stop moving
+      takeName: Take 001
+      firstFrame: 80
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Scan
+      takeName: Take 001
+      firstFrame: 125
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: bone root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
