@@ -1,7 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation.Samples;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class SightTower : Sight
 {

@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using UnityEngine.XR.ARFoundation.Samples;
 using UnityEngine.XR;
 
 public static class Tool

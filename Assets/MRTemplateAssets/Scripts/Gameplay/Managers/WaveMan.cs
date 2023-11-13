@@ -55,7 +55,7 @@ public class WaveMan : MonoBehaviour
                 EndWave();
         }
 
-        if (wave != 10)
+        if (wave != 3)
         {
             Debug.Log(" Wave Event Still Going!");
         }

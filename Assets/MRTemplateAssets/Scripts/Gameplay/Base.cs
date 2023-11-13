@@ -10,13 +10,13 @@ public class Base : MonoBehaviour
     public SmoothTranslate smoothTranslate;
     public Hologram hologram;
     public Transform gravity;
-    public RectTransform lifeRT;
+    // public RectTransform lifeRT;
     // public TMP_Text lifePercent;
-    public TMP_Text scoreDead;
-    public Animator bloodyScreen;
+    // public TMP_Text scoreDead;
+    // public Animator bloodyScreen;
     public GameObject exploPrefab, scale;
 
-    public UnityEvent deadEvent;
+    // public UnityEvent deadEvent;
 
     public float view = 2;
     public int life;
@@ -44,9 +44,9 @@ public class Base : MonoBehaviour
         {
             crtLife = Mathf.Max(0, crtLife - damage);
             float progress = Tool.Progress(crtLife, life);
-            lifeRT.localScale = new Vector3(progress, 1, 1);
+            // lifeRT.localScale = new Vector3(progress, 1, 1);
             // lifePercent.text = (int)(progress * 100) + "%";
-            bloodyScreen.Play("Damage");
+            // bloodyScreen.Play("Damage");
             if (crtLife <= 0) Die();
         }
     }
@@ -64,8 +64,8 @@ public class Base : MonoBehaviour
         //Decompose(scale.transform);
         //Destroy(scale);
 
-        scoreDead.text = " You survived wave " + WaveMan.inst.wave;
-        deadEvent.Invoke();
+        // scoreDead.text = " You survived wave " + WaveMan.inst.wave;
+        // deadEvent.Invoke();
     }
 
     void Decompose(Transform trans) {

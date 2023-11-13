@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
+using UnityEngine.XR;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
@@ -12,6 +13,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
+
 
         /// <summary>
         /// The camera that objects will face when spawned. If not set, defaults to the <see cref="Camera.main"/> camera.
@@ -43,6 +45,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
             "sure the visualization only lives temporarily.")]
         GameObject m_SpawnVisualizationPrefab;
+
+        [SerializeField]
+        [Tooltip("GrabManager script")]
+        // public GrabMan grabMan;
 
         /// <summary>
         /// Optional prefab to spawn for each spawned object.
@@ -176,6 +182,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             m_SpawnOptionIndex = -1;
         }
 
+        // Flag to track whether an object has been spawned
+        private bool hasSpawnedObject = false;
+
         /// <summary>
         /// Attempts to spawn an object from <see cref="objectPrefabs"/> at the given position. The object will have a
         /// yaw rotation that faces <see cref="cameraToFace"/>, plus or minus a random angle within <see cref="spawnAngleRange"/>.
@@ -192,6 +201,12 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <seealso cref="objectSpawned"/>
         public bool TrySpawnObject(Vector3 spawnPoint, Vector3 spawnNormal)
         {
+            if (hasSpawnedObject)
+            {
+                // Object already spawned, no need to spawn again
+                return false;
+            }
+
             if (m_OnlySpawnInView)
             {
                 var inViewMin = m_ViewportPeriphery;
@@ -211,7 +226,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             newObject.transform.position = spawnPoint;
             EnsureFacingCamera();
-                
+
             var facePosition = m_CameraToFace.transform.position;
             var forward = facePosition - spawnPoint;
             BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
@@ -231,6 +246,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
+
+            // Disable the script after spawning an object
+            enabled = false;
+            hasSpawnedObject = true;
+
             return true;
         }
     }

@@ -1,8 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.ARFoundation.Samples;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class TowerShop : MonoBehaviour
 {
@@ -51,14 +51,18 @@ public class TowerShop : MonoBehaviour
             t_click = Time.time;
         }
 
-        //if (clicking && !Input.GetMouseButton(0)) {
-        //    clicking = false;
-        //    if (!locked && Time.time - t_click < 0.2) {
-        //        Tower tower = Instantiate(towerPrefab);
-        //        tower.gameObject.SetActive(false);
-        //        GrabMan.inst.Grab(tower);
-        //    }
-        //}
+        // Convert this to work with the object spawner script
+
+        if (clicking && !Input.GetMouseButton(0)) {
+           clicking = false;
+           if (!locked && Time.time - t_click < 0.2) {
+               Tower tower = Instantiate(towerPrefab);
+               tower.gameObject.SetActive(false);
+               GrabMan.inst.Grab(tower);
+           }
+        }
+
+        // Implement a new Object Spawner script for tower shop
     }
 
     public void UpdateLock()
