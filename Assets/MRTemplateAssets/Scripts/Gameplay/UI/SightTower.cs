@@ -29,7 +29,7 @@ public class SightTower : Sight
         Vector3 screenPointTarget = Vector3.zero;
         Camera cam = ProjectMan.inst.cam;
 
-        if (!WaveMan.inWave && !GrabMan.inst.tower)
+        if (!WaveMan.inWave)
         {
             foreach (Tower t in Tower.towers)
             {
@@ -49,6 +49,27 @@ public class SightTower : Sight
                 }
             }
         }
+
+        //if (!WaveMan.inWave && !GrabMan.inst.tower)
+        //{
+        //    foreach (Tower t in Tower.towers)
+        //    {
+        //        Vector3 screenPoint = cam.WorldToScreenPoint(t.gravity.position);
+        //        float dist = Tool.Dist(cam.transform, t.gravity);
+        //        if (screenPoint.z > 0 && dist < distTarget && dist <= view)
+        //        {
+        //            float dx = screenPoint.x - Screen.width / 2;
+        //            float dy = screenPoint.y - Screen.height / 2;
+
+        //            if (dx * dx + dy * dy < ray)
+        //            {
+        //                target = t;
+        //                distTarget = dist;
+        //                screenPointTarget = screenPoint;
+        //            }
+        //        }
+        //    }
+        //}
 
 
         // "Butt" is short for Button

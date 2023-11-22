@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -6,13 +7,13 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class TowerShop : MonoBehaviour
 {
-    public Tower towerPrefab;
-    public RawImage img;
+
+    public ObjectSpawner objectSpawner;
+    public Button towerPlacementButton;
     public TMP_Text nameCost;
 
     bool clicking = false;
     float t_click;
-
     bool locked;
 
     public XRNode inputSource = XRNode.RightHand;
@@ -20,49 +21,51 @@ public class TowerShop : MonoBehaviour
 
     void Awake()
     {
-        nameCost.text = towerPrefab.name + " " + towerPrefab.cost + "$";
+        //nameCost.text = towerPrefab.name + " " + towerPrefab.cost + "$";
+        //nameCost.text = objectSpawner.towers.name + " " + objectSpawner.towers.cost + "$";
+
+        //towerPlacementButton.onClick.AddListener(OnTowerPlacementButtonClick);
     }
 
+    public void OnTowerPlacementButtonClick()
+    {
+        if (!locked)
+        {
+            // Call the method from ObjectSpawner to spawn the tower
+            objectSpawner.SpawnTowerObject(transform.position, transform.up);
+        }
+    }
 
     void Update()
     {
         bool currentButtonState = false;
         InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
 
-        
-        if (Tool.Click(img.rectTransform)) {
-            clicking = true;
-            t_click = Time.time;
-        }
-
-        if(clicking && !currentButtonState)
+        if (clicking && !currentButtonState)
         {
             clicking = false;
-            if(!locked && Time.time - t_click < 0.2)
+            if (!locked && Time.time - t_click < 0.2)
             {
-                Tower tower = Instantiate(towerPrefab);
-                tower.gameObject.SetActive(false);
-                GrabMan.inst.Grab(tower);
+                // Call the method from ObjectSpawner to spawn the tower
+                objectSpawner.SpawnTowerObject(transform.position, transform.up);
             }
         }
-        else if(!clicking && currentButtonState)
+        else if (!clicking && currentButtonState)
         {
             clicking = true;
             t_click = Time.time;
         }
 
-        // Convert this to work with the object spawner script
-
-        if (clicking && !Input.GetMouseButton(0)) {
-           clicking = false;
-           if (!locked && Time.time - t_click < 0.2) {
-               Tower tower = Instantiate(towerPrefab);
-               tower.gameObject.SetActive(false);
-               GrabMan.inst.Grab(tower);
-           }
-        }
-
-        // Implement a new Object Spawner script for tower shop
+        //if (clicking && !Input.GetMouseButton(0))
+        //{
+        //    clicking = false;
+        //    if (!locked && Time.time - t_click < 0.2)
+        //    {
+        //        Tower tower = Instantiate(towerPrefab);
+        //        tower.gameObject.SetActive(false);
+        //        GrabMan.inst.Grab(tower);
+        //    }
+        //}
     }
 
     public void UpdateLock()
@@ -70,15 +73,16 @@ public class TowerShop : MonoBehaviour
         float a = 1;
         locked = false;
 
-        if (Shop.inst.money < towerPrefab.cost) {
-            a = 0.3f;
-            locked = true;
-        }
-        Color color = Color.white;
-        color.a = a;
-        img.color = color;
-        color = nameCost.color;
-        color.a = a;
-        nameCost.color = color;
+        //if (Shop.inst.money < towerPrefab.cost)
+        //{
+        //    a = 0.3f;
+        //    locked = true;
+        //}
+        //Color color = Color.white;
+        //color.a = a;
+        //img.color = color;
+        //color = nameCost.color;
+        //color.a = a;
+        //nameCost.color = color;
     }
 }

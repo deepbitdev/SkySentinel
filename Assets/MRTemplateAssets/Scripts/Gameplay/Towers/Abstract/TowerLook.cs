@@ -40,11 +40,18 @@ public abstract class TowerLook : Tower
             }
         }
 
-        else if (!hologram && GrabMan.inst.tower != this) {
+        else if (!hologram != this) {
             float distPlayer = Tool.Dist(gravity, ProjectMan.inst.cam.transform);
             if (distPlayer < 0.8f && distPlayer > 0.2f)
                 lookPoint = ProjectMan.inst.cam.transform.position;
         }
+
+        //else if (!hologram && GrabMan.inst.tower != this)
+        //{
+        //    float distPlayer = Tool.Dist(gravity, ProjectMan.inst.cam.transform);
+        //    if (distPlayer < 0.8f && distPlayer > 0.2f)
+        //        lookPoint = ProjectMan.inst.cam.transform.position;
+        //}
 
         Look(lookPoint);
 

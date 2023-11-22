@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
-[RequireComponent(typeof(ObjectSpawner))]
+//[RequireComponent(typeof(ObjectSpawner))]
 public class SpawnedObjectsManager : MonoBehaviour
 {
     [SerializeField]

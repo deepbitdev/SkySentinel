@@ -93,6 +93,7 @@ public class GoalManager : MonoBehaviour
     [SerializeField]
     ObjectSpawner m_ObjectSpawner;
 
+
     const int k_NumberOfSurfacesTappedToCompleteGoal = 1;
     Vector3 m_TargetOffset = new Vector3(-.5f, -.25f, 1.5f);
 
@@ -216,6 +217,7 @@ public class GoalManager : MonoBehaviour
     {
         if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
             m_ObjectSpawner.objectSpawned -= OnObjectSpawned;
+            m_ObjectSpawner.towerSpawned -= OnObjectSpawned;
 
         // disable tooltips before setting next goal
         DisableTooltips();
@@ -259,6 +261,8 @@ public class GoalManager : MonoBehaviour
             }
             m_SurfacesTapped = 0;
             m_ObjectSpawner.objectSpawned += OnObjectSpawned;
+            m_ObjectSpawner.towerSpawned += OnObjectSpawned;
+
         }
     }
 

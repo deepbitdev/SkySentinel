@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Net.Sockets;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
@@ -12,7 +14,8 @@ public class GrabMan : MonoBehaviour
     Camera cam;
 
 
-        // Init
+    // Init
+    bool initTower = true;
     bool initBase = true;
     public ARRaycastManager arRaycastManager;
 
@@ -23,10 +26,12 @@ public class GrabMan : MonoBehaviour
 
     [SerializeField]
     //ARRaycastHitEventAsset m_RaycastHit;
+    public XRNode inputSource = XRNode.RightHand;
+    InputDevice inputDevice;
 
 
     // Grab
-    [HideInInspector] public Tower tower;
+    //[SerializeField] public Tower tower;
     public RectTransform rtCancelPurchase;
     bool replace = false;
 
@@ -45,102 +50,161 @@ public class GrabMan : MonoBehaviour
     void Start()
     {
         Base.inst.gameObject.SetActive(false);
+        TowerBase.instance.gameObject.SetActive(false);
         test = ProjectMan.test;
         cam = ProjectMan.inst.cam;
+
+        inputDevice = InputDevices.GetDeviceAtXRNode(inputSource);
     }
 
 
     void Update()
     {
+
+        //if (!initTower)
+        //{
+        //    InitTower();
+        //}
+        //else
+        //{
+
+        //}
+
+        if (initTower)
+            InitTower();
+            
+
+
         if (initBase)
             InitBase();
             //InitBase();
 
 
-        else if (tower)
-            Drag();
+        //else if (tower)
+        //    Drag();
     }
 
     private void Drag()
     {
         Vector3 pos;
 
-            //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
-            //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
-            //{
-            //    // rotation
-            //    Vector3 camProj = cam.transform.position;
-            //    camProj.y = pos.y;
-            //    Tool.LookDir(tower, Tool.Dir(pos, camProj, false));
+        ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
 
-            //    // position
-            //    tower.smoothTranslate.SetTarget(pos);
+        if (objectSpawner != null)
+        {
+            Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
+            Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
 
-            //    // active
-            //    if (!replace && !tower.gameObject.active)
-            //    {
-            //        tower.gameObject.SetActive(true);
-            //        grabActiveEvent.Invoke();
-            //    }
-            //}
+            bool spawnSuccessful = objectSpawner.SpawnTowerObject(spawnPoint, spawnNormal);
+
+            if (spawnSuccessful)
+            {
+                //active
+                //if (!replace && !tower.gameObject.active)
+                //{
+                //    tower.gameObject.SetActive(true);
+                //    grabActiveEvent.Invoke();
+                //}
+            }
+            else
+            {
+
+            }
+        }
+
+        //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
+        //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
+        //{
+        //    // rotation
+        //    Vector3 camProj = cam.transform.position;
+        //    camProj.y = pos.y;
+        //    Tool.LookDir(tower, Tool.Dir(pos, camProj, false));
+
+        //    // position
+        //    tower.smoothTranslate.SetTarget(pos);
+
+        //    // active
+        //    if (!replace && !tower.gameObject.active)
+        //    {
+        //        tower.gameObject.SetActive(true);
+        //        grabActiveEvent.Invoke();
+        //    }
+        //}
 
 
 
 
-            #region Drag Game Environ
-            //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
-            //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
-            //{
-            //    // rotation
-            //    Vector3 camProj = cam.transform.position;
-            //    camProj.y = pos.y;
-            //    Tool.LookDir(tower, Tool.Dir(pos, camProj, false));
+        #region Drag Game Environ
+        //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
+        //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
+        //{
+        //    // rotation
+        //    Vector3 camProj = cam.transform.position;
+        //    camProj.y = pos.y;
+        //    Tool.LookDir(tower, Tool.Dir(pos, camProj, false));
 
-            //    // position
-            //    tower.smoothTranslate.SetTarget(pos);
+        //    // position
+        //    tower.smoothTranslate.SetTarget(pos);
 
-            //    // active
-            //    if (!replace && !tower.gameObject.active)
-            //    {
-            //        tower.gameObject.SetActive(true);
-            //        grabActiveEvent.Invoke();
-            //    }
-            //}
-            #endregion
+        //    // active
+        //    if (!replace && !tower.gameObject.active)
+        //    {
+        //        tower.gameObject.SetActive(true);
+        //        grabActiveEvent.Invoke();
+        //    }
+        //}
+        #endregion
 
 
 
 
         // You can call these from the button UI onClickEvent 
 
-        if (Tool.Click())
+        //if (Tool.Click())
+        //{
+        //    if (!replace && tower.gameObject.active && !Tool.MouseInRT(rtCancelPurchase))
+        //        Buy();
+        //    else if (replace)
+        //        unreplace();
+        //}
+
+        // Replace Tool.Click() with the appropriate condition for trigger button press
+        bool triggerButtonDown = false;
+        inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonDown);
+        //InputDevices.GetDeviceAtXRNode(inputDevice).TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonDown);
+
+        if (triggerButtonDown)
         {
-            if (!replace && tower.gameObject.active && !Tool.MouseInRT(rtCancelPurchase))
-                Buy();
-            else if (replace)
-                unreplace();
+            //if (!replace && tower.gameObject.active && !Tool.MouseInRT(rtCancelPurchase))
+            //{
+            //    Buy();
+            //}
+            //else if (replace)
+            //{
+            //    unreplace();
+            //}
         }
     }
 
 
     private void Buy()
     {
-        tower.hologram.Dissolve();
-        Shop.inst.AddMoney(-tower.cost);
-        tower = null;
+        //tower.hologram.Dissolve();
+        //Shop.inst.AddMoney(-tower.cost);
+        //tower = null;
         ungrabEvent.Invoke();
     }
 
     private void unreplace()
     {
-        tower = null;
+        //tower = null;
         unreplaceEvent.Invoke();
     }
 
     public void CancelPurchase()
     {
-        Destroy(tower.gameObject);
-        tower = null;
+        //Destroy(tower.gameObject);
+        //tower = null;
         ungrabEvent.Invoke();
     }
 
@@ -159,7 +223,7 @@ public class GrabMan : MonoBehaviour
 
             bool spawnSuccessful = objectSpawner.TrySpawnObject(spawnPoint, spawnNormal);
 
-            if(spawnSuccessful)
+            if (spawnSuccessful)
             {
                 //active
                if (!Base.inst.gameObject.active)
@@ -238,18 +302,56 @@ public class GrabMan : MonoBehaviour
     }
 
 
+    public void InitTower()
+    {
+        Vector3 pos;
+
+        ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
+
+        if (objectSpawner != null)
+        {
+            Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
+            Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
+
+            bool spawnTower = objectSpawner.SpawnTowerObject(spawnPoint, spawnNormal);
+
+            if (spawnTower)
+            {
+                ////active
+                //if (!replace && !tower.gameObject.active)
+                //{
+                //    tower.gameObject.SetActive(true);
+                //    grabActiveEvent.Invoke();
+                //}
+
+                if(TowerBase.instance.gameObject.active)
+                {
+                    TowerBase.instance.gameObject.SetActive(true);
+
+                    activeBaseEvent.Invoke();
+
+                }
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+
 
     public void Grab(Tower tower)
     {
         replace = false;
-        this.tower = tower;
+        //this.tower = tower;
         grabEvent.Invoke();
     }
 
     public void Replace()
     {
         replace = true;
-        tower = SightTower.inst.target;
+        //tower = SightTower.inst.target;
         replaceEvent.Invoke();
     }
 }
