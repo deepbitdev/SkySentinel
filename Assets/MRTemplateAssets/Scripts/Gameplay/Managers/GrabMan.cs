@@ -50,7 +50,6 @@ public class GrabMan : MonoBehaviour
     void Start()
     {
         Base.inst.gameObject.SetActive(false);
-        TowerBase.instance.gameObject.SetActive(false);
         test = ProjectMan.test;
         cam = ProjectMan.inst.cam;
 
@@ -60,19 +59,6 @@ public class GrabMan : MonoBehaviour
 
     void Update()
     {
-
-        //if (!initTower)
-        //{
-        //    InitTower();
-        //}
-        //else
-        //{
-
-        //}
-
-        if (initTower)
-            InitTower();
-            
 
 
         if (initBase)
@@ -88,29 +74,7 @@ public class GrabMan : MonoBehaviour
     {
         Vector3 pos;
 
-        ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
-
-        if (objectSpawner != null)
-        {
-            Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
-            Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
-
-            bool spawnSuccessful = objectSpawner.SpawnTowerObject(spawnPoint, spawnNormal);
-
-            if (spawnSuccessful)
-            {
-                //active
-                //if (!replace && !tower.gameObject.active)
-                //{
-                //    tower.gameObject.SetActive(true);
-                //    grabActiveEvent.Invoke();
-                //}
-            }
-            else
-            {
-
-            }
-        }
+        
 
         //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
         //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
@@ -300,45 +264,6 @@ public class GrabMan : MonoBehaviour
             placeBaseEvent.Invoke();
         }
     }
-
-
-    public void InitTower()
-    {
-        Vector3 pos;
-
-        ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
-
-        if (objectSpawner != null)
-        {
-            Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
-            Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
-
-            bool spawnTower = objectSpawner.SpawnTowerObject(spawnPoint, spawnNormal);
-
-            if (spawnTower)
-            {
-                ////active
-                //if (!replace && !tower.gameObject.active)
-                //{
-                //    tower.gameObject.SetActive(true);
-                //    grabActiveEvent.Invoke();
-                //}
-
-                if(TowerBase.instance.gameObject.active)
-                {
-                    TowerBase.instance.gameObject.SetActive(true);
-
-                    activeBaseEvent.Invoke();
-
-                }
-            }
-            else
-            {
-
-            }
-        }
-    }
-
 
 
     public void Grab(Tower tower)

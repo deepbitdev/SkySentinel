@@ -1346,6 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hologram: {fileID: 6756937944197752864}
+  m_gameObject: {fileID: 0}
 --- !u!1 &5568142781978276201
 GameObject:
   m_ObjectHideFlags: 0

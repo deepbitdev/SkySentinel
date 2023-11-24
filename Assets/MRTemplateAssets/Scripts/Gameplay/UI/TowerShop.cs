@@ -32,7 +32,7 @@ public class TowerShop : MonoBehaviour
         if (!locked)
         {
             // Call the method from ObjectSpawner to spawn the tower
-            objectSpawner.SpawnTowerObject(transform.position, transform.up);
+            
         }
     }
 
@@ -47,7 +47,7 @@ public class TowerShop : MonoBehaviour
             if (!locked && Time.time - t_click < 0.2)
             {
                 // Call the method from ObjectSpawner to spawn the tower
-                objectSpawner.SpawnTowerObject(transform.position, transform.up);
+                //objectSpawner.SpawnTowerObject(transform.position, transform.up);
             }
         }
         else if (!clicking && currentButtonState)

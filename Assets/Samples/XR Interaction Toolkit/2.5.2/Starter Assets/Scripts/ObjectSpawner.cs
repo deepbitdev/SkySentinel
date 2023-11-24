@@ -43,20 +43,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
 
         [SerializeField]
-        [Tooltip("The list of towers available to spawn.")]
-        List<GameObject> m_towers = new List<GameObject>();
-
-        /// <summary>
-        /// The list of prefabs available to spawn.
-        /// </summary>
-        public List<GameObject> towers
-        {
-            get => m_towers;
-            set => m_towers = value;
-        }
-
-
-        [SerializeField]
         [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
             "sure the visualization only lives temporarily.")]
         GameObject m_SpawnVisualizationPrefab;
@@ -281,59 +267,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
 
-        public bool SpawnTowerObject(Vector3 spawnPoint, Vector3 spawnNormal)
-        {
-            if (hasSpawnedObject)
-            {
-                // Object already spawned, no need to spawn again
-                return false;
-            }
-
-            if (m_OnlySpawnInView)
-            {
-                var inViewMin = m_ViewportPeriphery;
-                var inViewMax = 1f - m_ViewportPeriphery;
-                var pointInViewportSpace = cameraToFace.WorldToViewportPoint(spawnPoint);
-                if (pointInViewportSpace.z < 0f || pointInViewportSpace.x > inViewMax || pointInViewportSpace.x < inViewMin ||
-                    pointInViewportSpace.y > inViewMax || pointInViewportSpace.y < inViewMin)
-                {
-                    return false;
-                }
-            }
-
-            var objectIndex = isSpawnOptionRandomized ? Random.Range(0, m_towers.Count) : m_SpawnOptionIndex;
-            var newObject = Instantiate(m_ObjectPrefabs[objectIndex]);
-            if (m_SpawnAsChildren)
-                newObject.transform.parent = transform;
-
-            newObject.transform.position = spawnPoint;
-            EnsureFacingCamera();
-
-            var facePosition = m_CameraToFace.transform.position;
-            var forward = facePosition - spawnPoint;
-            BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
-            newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
-
-            if (m_ApplyRandomAngleAtSpawn)
-            {
-                var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
-                newObject.transform.Rotate(Vector3.up, randomRotation);
-            }
-
-            if (m_SpawnVisualizationPrefab != null)
-            {
-                var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
-                visualizationTrans.position = spawnPoint;
-                visualizationTrans.rotation = newObject.transform.rotation;
-            }
-
-            towerSpawned?.Invoke(newObject);
-
-            // Disable the script after spawning an object
-            enabled = false;
-            hasSpawnedObject = true;
-
-            return true;
-        }
+       
     }
 }

@@ -217,7 +217,6 @@ public class GoalManager : MonoBehaviour
     {
         if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
             m_ObjectSpawner.objectSpawned -= OnObjectSpawned;
-            m_ObjectSpawner.towerSpawned -= OnObjectSpawned;
 
         // disable tooltips before setting next goal
         DisableTooltips();
@@ -261,7 +260,6 @@ public class GoalManager : MonoBehaviour
             }
             m_SurfacesTapped = 0;
             m_ObjectSpawner.objectSpawned += OnObjectSpawned;
-            m_ObjectSpawner.towerSpawned += OnObjectSpawned;
 
         }
     }
