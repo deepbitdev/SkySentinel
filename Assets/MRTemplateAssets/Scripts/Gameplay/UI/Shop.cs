@@ -8,7 +8,7 @@ public class Shop : MonoBehaviour
 
     public Animator animator;
 
-    public RectTransform wirst, body;
+    //public RectTransform wirst, body;
 
     public int money;
     public TMP_Text moneyText;

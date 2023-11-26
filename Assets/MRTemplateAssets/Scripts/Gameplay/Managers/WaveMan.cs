@@ -16,7 +16,8 @@ public class WaveMan : MonoBehaviour
     public float dtEnemy = 0.3f;
     float tNextEnemy;
 
-    public TMP_Text waveInfo, waveNumber;
+    public TMP_Text waveInfo;
+    //public TMP_Text waveNumber;
     public UnityEvent startWaveEvent, endWaveEvent, successEvent;
     public static bool inWave = false;
     [HideInInspector] public int wave = 1;
@@ -98,7 +99,7 @@ public class WaveMan : MonoBehaviour
         wave++;
         moneyTotEnemies *= coefCost;
         waveInfo.text = "Wave " + wave;
-        waveNumber.text = wave.ToString();
+        //waveNumber.text = wave.ToString();
         inWave = false;
         // LevelSys.instance.GainExperienceFlatRate(20);
         endWaveEvent.Invoke();

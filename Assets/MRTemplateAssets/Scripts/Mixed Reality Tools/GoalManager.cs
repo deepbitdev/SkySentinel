@@ -427,7 +427,7 @@ public class GoalManager : MonoBehaviour
         );
 
         m_VideoPlayer.transform.rotation = targetPlayerRotation;
-        m_VideoPlayer.SetActive(true);
+        m_VideoPlayer.SetActive(false);
         if (follow != null)
             follow.rotationFollowMode = LazyFollow.RotationFollowMode.LookAtWithWorldUp;
     }
