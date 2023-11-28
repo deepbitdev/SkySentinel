@@ -24,12 +24,6 @@ public class GrabMan : MonoBehaviour
     public ObjectSpawner objectSpawner;
 
 
-    [SerializeField]
-    //ARRaycastHitEventAsset m_RaycastHit;
-    public XRNode inputSource = XRNode.RightHand;
-    InputDevice inputDevice;
-
-
     // Grab
     //[SerializeField] public Tower tower;
     public RectTransform rtCancelPurchase;
@@ -52,8 +46,6 @@ public class GrabMan : MonoBehaviour
         Base.inst.gameObject.SetActive(false);
         test = ProjectMan.test;
         cam = ProjectMan.inst.cam;
-
-        inputDevice = InputDevices.GetDeviceAtXRNode(inputSource);
     }
 
 
@@ -74,7 +66,7 @@ public class GrabMan : MonoBehaviour
     {
         Vector3 pos;
 
-        
+
 
         //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
         //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
@@ -132,22 +124,20 @@ public class GrabMan : MonoBehaviour
         //        unreplace();
         //}
 
-        // Replace Tool.Click() with the appropriate condition for trigger button press
-        bool triggerButtonDown = false;
-        inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonDown);
-        //InputDevices.GetDeviceAtXRNode(inputDevice).TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonDown);
+        //if (!replace && tower.gameObject.active && !Tool.MouseInRT(rtCancelPurchase))
+        //{
+        //    Buy();
+        //}
+        //else if (replace)
+        //{
+        //    unreplace();
+        //}
+    }
 
-        if (triggerButtonDown)
-        {
-            //if (!replace && tower.gameObject.active && !Tool.MouseInRT(rtCancelPurchase))
-            //{
-            //    Buy();
-            //}
-            //else if (replace)
-            //{
-            //    unreplace();
-            //}
-        }
+
+    public void BackToWave()
+    {
+        activeBaseEvent.Invoke();
     }
 
 
@@ -172,6 +162,24 @@ public class GrabMan : MonoBehaviour
         ungrabEvent.Invoke();
     }
 
+    public void UpdateStats()
+    {
+        SessionResultsManager resultsManager = SessionResultsManager.Instance;
+
+        if (resultsManager != null)
+        {
+            int hits = 10;
+            int misses = 5;
+            int waveNumber = WaveMan.inst.wave;
+
+            resultsManager.UpdateResults(hits, misses, waveNumber);
+        }
+        else
+        {
+            Debug.Log("SessionResultsManager not found in scene!");
+        }
+    }
+
     
 
     public void InitBase()
@@ -194,6 +202,8 @@ public class GrabMan : MonoBehaviour
                {
                    Base.inst.gameObject.SetActive(true);
                    activeBaseEvent.Invoke();
+
+                   
                }
             }
             else

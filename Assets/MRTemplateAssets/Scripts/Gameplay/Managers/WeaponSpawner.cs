@@ -73,6 +73,9 @@ public class WeaponSpawner : MonoBehaviour
             {
                 towerBase.m_hologram.Dissolve();
             }
+
+            // Grab Event Trigger
+            GrabMan.inst.grabActiveEvent.Invoke();
         }
     }
 

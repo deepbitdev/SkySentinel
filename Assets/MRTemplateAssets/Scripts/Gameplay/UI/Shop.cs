@@ -52,6 +52,9 @@ public class Shop : MonoBehaviour
     //public void Close() => animator.SetTrigger("close");
     //public void SetClosedAnim() => animator.Play("Shop Closed");
 
+
+    
+
     private void OnDisable()
     {
         PlayerPrefs.SetInt("money", money);

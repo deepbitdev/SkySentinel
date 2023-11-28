@@ -7,8 +7,6 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class TowerShop : MonoBehaviour
 {
-
-    public ObjectSpawner objectSpawner;
     public Button towerPlacementButton;
     public TMP_Text nameCost;
 

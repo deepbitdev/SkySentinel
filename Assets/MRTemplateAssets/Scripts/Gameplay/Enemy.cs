@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public Transform gravity;
 
     public MeshRenderer mr;
+
+    public ParticleSystem explosion;
     
     
     bool dissolve = true;
@@ -25,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         crtLife = life;
         enemies.Add(this);
+        explosion.Pause();
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public class Enemy : MonoBehaviour
 
     void Die() {
         Shop.inst.AddMoney(money);
+        explosion.Play();
         enemies.Remove(this);
         Destroy(gameObject);
     }
