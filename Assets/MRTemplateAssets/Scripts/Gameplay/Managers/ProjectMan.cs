@@ -21,7 +21,6 @@ public class ProjectMan : MonoBehaviour
 
     // Device
     public static bool test;
-    public string deviceName;
     public GameObject AR, NAR;
     public Camera ARcam, NARcam;
     [HideInInspector] public Camera cam;
@@ -36,7 +35,6 @@ public class ProjectMan : MonoBehaviour
         LayerMask_BaseGround  = LayerMask.GetMask("Base Ground");
         LayerMask_ForceField  = LayerMask.GetMask("Force Field");
 
-        test = SystemInfo.deviceName == deviceName;
         AR.SetActive(!test);
         NAR.SetActive(test);
         if (test) cam = NARcam;
@@ -52,6 +50,7 @@ public class ProjectMan : MonoBehaviour
         Enemy.enemies.Clear();
         Tower.towers.Clear();
         WaveMan.inWave = false;
+        SessionResultsManager.Instance.ResetResults();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
             tNextShot = Time.time + tShot;
             overload += overloadShot;
 
+            ControllerHaptics.instance.ShootingHaptic();
 
 
             if (overload >= t_overload)
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
 
 
     }
+
 
 
     void UpdateOverload() {
@@ -115,3 +117,4 @@ public class Player : MonoBehaviour
         // Add controller haptic event for shooting
     }
 }
+

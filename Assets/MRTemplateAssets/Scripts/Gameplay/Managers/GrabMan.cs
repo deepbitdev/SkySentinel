@@ -13,11 +13,20 @@ public class GrabMan : MonoBehaviour
     bool test;
     Camera cam;
 
+    // Controller Haptics
+    public XRNode inputSource = XRNode.RightHand;
+    private InputDevice targetDevice;
+    private bool isHapticSupported;
+
+    private float defaultDuration = 0.5f;
+    private float defaultAmplitude = 0.5f;
+
 
     // Init
     bool initTower = true;
     bool initBase = true;
     public ARRaycastManager arRaycastManager;
+    public ARPlaneManager arPlaneManager;
 
 
     [Header("Object Spawner")]
@@ -162,25 +171,11 @@ public class GrabMan : MonoBehaviour
         ungrabEvent.Invoke();
     }
 
-    public void UpdateStats()
-    {
-        SessionResultsManager resultsManager = SessionResultsManager.Instance;
 
-        if (resultsManager != null)
-        {
-            int hits = 10;
-            int misses = 5;
-            int waveNumber = WaveMan.inst.wave;
 
-            resultsManager.UpdateResults(hits, misses, waveNumber);
-        }
-        else
-        {
-            Debug.Log("SessionResultsManager not found in scene!");
-        }
-    }
 
-    
+
+
 
     public void InitBase()
     {
@@ -200,10 +195,11 @@ public class GrabMan : MonoBehaviour
                 //active
                if (!Base.inst.gameObject.active)
                {
-                   Base.inst.gameObject.SetActive(true);
-                   activeBaseEvent.Invoke();
+                    
+                    Base.inst.gameObject.SetActive(true);
+                    
 
-                   
+                    activeBaseEvent.Invoke();
                }
             }
             else
@@ -212,66 +208,21 @@ public class GrabMan : MonoBehaviour
             }
         }
 
-        // Assuming you have a reference to SpawnManager and the parameters are defined
-        
-
-            #region Place Game
-            //if ((test && Tool.MouseHit(cam, out pos, ProjectMan.LayerMask_NAR_Ground)) ||
-            //    (!test && Tool.ScreenCenterHitAR(ProjectMan.inst.cam, arRaycastManager, out pos)))
-            //{
-            //    // position
-            //    Base.inst.smoothTranslate.SetTarget(pos);
-
-            //    // active
-            //    if (!Base.inst.gameObject.active)
-            //    {
-            //        Base.inst.gameObject.SetActive(true);
-            //        activeBaseEvent.Invoke();
-            //    }
-            //}
-
-            // if(objectSpawner != null && objectSpawner.TrySpawnObject())
-            // {
-            //     if (!Base.inst.gameObject.active)
-            //    {
-            //        Base.inst.gameObject.SetActive(true);
-            //        activeBaseEvent.Invoke();
-            //    }
-
-            // //    return true;
-            // }
-
-
-            // if(success)
-            // {
-            //     if (!Base.inst.gameObject.active)
-            //    {
-            //        Base.inst.gameObject.SetActive(true);
-            //        activeBaseEvent.Invoke();
-            //    }
-            // }
-            // else
-            // {
-
-            // }
-
-            // if(ObjectSpawner.TrySpawnObject)
-            // {
-            //     //active
-            //    if (!Base.inst.gameObject.active)
-            //    {
-            //        Base.inst.gameObject.SetActive(true);
-            //        activeBaseEvent.Invoke();
-            //    }
-            // }
-            #endregion
-
 
         if (Base.inst.gameObject.active)
         {
             initBase = false;
             Base.inst.hologram.Dissolve();
+            ControllerHaptics.instance.EnvPlacementHaptic();
             placeBaseEvent.Invoke();
+        }
+    }
+
+    public void TurnOffPlanes()
+    {
+        foreach (var plane in arPlaneManager.trackables)
+        {
+            plane.gameObject.SetActive(false);
         }
     }
 

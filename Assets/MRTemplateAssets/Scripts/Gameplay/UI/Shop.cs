@@ -11,24 +11,24 @@ public class Shop : MonoBehaviour
     //public RectTransform wirst, body;
 
     public int money;
-    public TMP_Text moneyText;
+    //public TMP_Text moneyText;
 
     public const string moneyKey = "$";
 
-    public UnityEvent moneyChangedEvent;
+    //public UnityEvent moneyChangedEvent;
 
     void Awake()
     {
         inst = this;
         // moneyText.text = money + " $";
-        moneyChangedEvent.Invoke();
+        //moneyChangedEvent.Invoke();
 
         // update tower shop
-        moneyText.text = PlayerPrefs.GetInt("money").ToString();
+        //moneyText.text = PlayerPrefs.GetInt("money").ToString();
     }
 
 
-    public RectTransform canvas;
+    //public RectTransform canvas;
     //void Update()
     //{
     //    if (IsOpened())
@@ -72,7 +72,7 @@ public class Shop : MonoBehaviour
         PlayerPrefs.Save();
         
         money += m;
-        moneyText.text = money + " $";
-        moneyChangedEvent.Invoke();
+        //moneyText.text = money + " $";
+        //moneyChangedEvent.Invoke();
     }
 }

@@ -10,7 +10,6 @@ public class SessionResultsManager : MonoBehaviour
     public static SessionResultsManager Instance => _instance;
 
     // Reference to UI elements for displaying results
-    public TextMeshProUGUI scoreText;
     public TextMeshProUGUI hitsText;
     public TextMeshProUGUI missesText;
     public TextMeshProUGUI waveNumberText;
@@ -18,7 +17,6 @@ public class SessionResultsManager : MonoBehaviour
     public GameObject resultsPanel;
 
     // Session result variables
-    private int score = 0;
     private int hits = 0;
     private int misses = 0;
     private int waveNumber = 0;
@@ -46,13 +44,13 @@ public class SessionResultsManager : MonoBehaviour
         this.misses = misses;
         this.waveNumber = WaveMan.inst.wave;
         this.money = Shop.inst.money;
-        score += hits; // You can adjust how the score is calculated based on your game logic
+       
 
         // Update UI text elements
-        scoreText.text = "Score: " + score;
         hitsText.text = "Hits: " + hits;
         missesText.text = "Misses: " + misses;
         waveNumberText.text = "Wave: " + waveNumber;
+        moneyText.text = "Money:" + money;
 
         // Show the results panel
         resultsPanel.SetActive(true);
@@ -62,7 +60,6 @@ public class SessionResultsManager : MonoBehaviour
     public void ResetResults()
     {
         // Reset variables
-        score = 0;
         hits = 0;
         misses = 0;
         waveNumber = 0;

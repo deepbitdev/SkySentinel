@@ -16,6 +16,9 @@ public class Base : MonoBehaviour
     // public Animator bloodyScreen;
     public GameObject exploPrefab, scale;
 
+    // Misses counter
+    public int misses;
+
     // public UnityEvent deadEvent;
 
     public float view = 2;
@@ -49,6 +52,14 @@ public class Base : MonoBehaviour
             // bloodyScreen.Play("Damage");
             if (crtLife <= 0) Die();
         }
+    }
+
+    public void AddMisses(int miss)
+    {
+        PlayerPrefs.SetInt("misses", miss);
+        PlayerPrefs.Save();
+
+        misses += miss;
     }
 
     public void RestoreHealth()

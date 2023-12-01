@@ -255,7 +255,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
                 visualizationTrans.position = spawnPoint;
                 visualizationTrans.rotation = newObject.transform.rotation;
+                
             }
+
+            
 
             objectSpawned?.Invoke(newObject);
 

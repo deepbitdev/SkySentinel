@@ -27,7 +27,8 @@ public class Enemy : MonoBehaviour
     {
         crtLife = life;
         enemies.Add(this);
-        explosion.Pause();
+        //explosion.Pause();
+        explosion.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -67,7 +68,8 @@ public class Enemy : MonoBehaviour
 
     void Die() {
         Shop.inst.AddMoney(money);
-        explosion.Play();
+        //explosion.Play();
+        explosion.gameObject.SetActive(true);
         enemies.Remove(this);
         Destroy(gameObject);
     }

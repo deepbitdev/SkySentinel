@@ -75,12 +75,18 @@ public class WeaponSpawner : MonoBehaviour
             }
 
             // Grab Event Trigger
-            GrabMan.inst.grabActiveEvent.Invoke();
+            GrabMan.inst.ungrabEvent.Invoke();
+
         }
     }
 
     public void SwitchObjectToSpawn(int newIndex)
     {
+
+        // Grab Event Trigger
+        GrabMan.inst.grabActiveEvent.Invoke();
+
+
         // Set the currentObjectIndex directly from the UI button script
         if (newIndex >= 0 && newIndex < objectsToSpawn.Length)
         {
