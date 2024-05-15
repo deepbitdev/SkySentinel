@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31453457, g: 0.55162674, b: 0.82192343, a: 1}
+  m_IndirectSpecularColor: {r: 0.31479615, g: 0.5520229, b: 0.82240194, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9328,6 +9328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefabs:
+  - {fileID: 2752821103250354709, guid: 0aecffc4472b0410ea83b23e8ee272fc, type: 3}
   - {fileID: 6734409048745749497, guid: 442e246f645634de9a496c15c9e0a875, type: 3}
   - {fileID: 6734409048745749497, guid: 15682da02144a3e4ab6994db852c8a7c, type: 3}
   - {fileID: -2709802480232972198, guid: 53ec6d2677e329748a22b72ea6317a0b, type: 3}
@@ -11860,7 +11861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1317247606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14459,7 +14460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1690770800
 Transform:
   m_ObjectHideFlags: 0
@@ -39833,12 +39834,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!114 &5185618397852440153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40486,7 +40487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CameraToFace: {fileID: 0}
   m_ObjectPrefabs:
-  - {fileID: 6758241807482036172, guid: 7fe1495ad30904934aeb6f0aaee78ad9, type: 3}
+  - {fileID: 1925020279760223897, guid: 1a17f91a088ed4c26b18318c898bb832, type: 3}
   m_SpawnVisualizationPrefab: {fileID: 1882492882186723134, guid: dee56e90383dc594393798dea96faedc, type: 3}
   m_SpawnOptionIndex: -1
   m_OnlySpawnInView: 1
