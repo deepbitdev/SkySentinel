@@ -1,3 +1,4 @@
+using Oculus.Interaction.Input;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class WeaponSpawner : MonoBehaviour
     #region New Functionality with button list
     public GameObject[] objectsToSpawn;
     //public ActionBasedController xrController;
+    public GameObject controller;
     public GameObject followingObjectPrefab;
 
     private GameObject followingObject;
@@ -21,10 +23,10 @@ public class WeaponSpawner : MonoBehaviour
             Debug.LogError("Please assign objects to spawn in the inspector.");
         }
 
-        //if (xrController == null)
-        //{
-        //    Debug.LogError("Please assign an ActionBasedController to the inspector.");
-        //}
+        if(controller == null)
+        {
+            Debug.LogError("Please assign an controller prefab to the inspector.");
+        }
 
         if (followingObjectPrefab == null)
         {
@@ -41,7 +43,7 @@ public class WeaponSpawner : MonoBehaviour
         {
             return;
         }
-        
+
 
         // Check if the trigger button is pressed and canSpawn flag is true
         //if (canSpawn && xrController.activateAction.action.ReadValue<float>() > 0.5f)
@@ -54,6 +56,16 @@ public class WeaponSpawner : MonoBehaviour
         //    canSpawn = true; // Reset the flag when the trigger is released
         //}
 
+        if(canSpawn && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            SpawnObject();
+            canSpawn = false; // Set flag to prevent rapid spawning, adjust as needed
+        }
+        else if(!OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && !canSpawn)
+        {
+            canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
+        }
+
         UpdateFollowingObjectPosition();
     }
 
@@ -63,7 +75,7 @@ public class WeaponSpawner : MonoBehaviour
         if (objectsToSpawn.Length > 0)
         {
             //GameObject newObject = Instantiate(objectsToSpawn[currentObjectIndex], xrController.transform.position, xrController.transform.rotation);
-            GameObject newObject = Instantiate(objectsToSpawn[currentObjectIndex], transform.position, transform.rotation);
+            GameObject newObject = Instantiate(objectsToSpawn[currentObjectIndex], controller.transform.position, controller.transform.rotation);
 
 
             // Access the TowerBase component on the spawned object
@@ -98,7 +110,7 @@ public class WeaponSpawner : MonoBehaviour
     {
         // Spawn the following object at the XRController's position
         //followingObject = Instantiate(followingObjectPrefab, xrController.transform.position, Quaternion.identity);
-        followingObject = Instantiate(followingObjectPrefab, transform.position, Quaternion.identity);
+        followingObject = Instantiate(followingObjectPrefab, controller.transform.position, Quaternion.identity);
     }
 
     void UpdateFollowingObjectPosition()
@@ -107,7 +119,7 @@ public class WeaponSpawner : MonoBehaviour
         if (followingObject != null)
         {
             //followingObject.transform.position = xrController.transform.position;
-            followingObject.transform.position = transform.position;
+            followingObject.transform.position = controller.transform.position;
         }
     }
 

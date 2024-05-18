@@ -15862,6 +15862,11 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!1 &1327487404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2483171112401779982, guid: f54012181eacade4ea242c65f804720f, type: 3}
+  m_PrefabInstance: {fileID: 1325066583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1333756078
 GameObject:
   m_ObjectHideFlags: 0
@@ -16811,6 +16816,7 @@ MonoBehaviour:
   - {fileID: 373875903764823111, guid: 6616fb5917f674980a4614b2886bdd26, type: 3}
   - {fileID: 1884923302320195018, guid: fd068a808467a433f9cee09ee8a33227, type: 3}
   - {fileID: 9130022211382723268, guid: c065d4639edf1412599cd12913c506d0, type: 3}
+  controller: {fileID: 1327487404}
   followingObjectPrefab: {fileID: 210743621154594754, guid: 94643fb0df9315f4193beaad58eb94df, type: 3}
 --- !u!1 &1424959179
 GameObject:
