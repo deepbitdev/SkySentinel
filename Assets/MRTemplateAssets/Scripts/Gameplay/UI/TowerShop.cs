@@ -2,8 +2,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class TowerShop : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class TowerShop : MonoBehaviour
     float t_click;
     bool locked;
 
-    public XRNode inputSource = XRNode.RightHand;
+    //public XRNode inputSource = XRNode.RightHand;
 
 
     void Awake()
@@ -36,10 +34,10 @@ public class TowerShop : MonoBehaviour
 
     void Update()
     {
-        bool currentButtonState = false;
-        InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
+        //bool currentButtonState = false;
+        //InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
 
-        if (clicking && !currentButtonState)
+        if (clicking)
         {
             clicking = false;
             if (!locked && Time.time - t_click < 0.2)
@@ -48,11 +46,26 @@ public class TowerShop : MonoBehaviour
                 //objectSpawner.SpawnTowerObject(transform.position, transform.up);
             }
         }
-        else if (!clicking && currentButtonState)
+        else if (!clicking)
         {
             clicking = true;
             t_click = Time.time;
         }
+
+        //if (clicking && !currentButtonState)
+        //{
+        //    clicking = false;
+        //    if (!locked && Time.time - t_click < 0.2)
+        //    {
+        //        // Call the method from ObjectSpawner to spawn the tower
+        //        //objectSpawner.SpawnTowerObject(transform.position, transform.up);
+        //    }
+        //}
+        //else if (!clicking && currentButtonState)
+        //{
+        //    clicking = true;
+        //    t_click = Time.time;
+        //}
 
         //if (clicking && !Input.GetMouseButton(0))
         //{

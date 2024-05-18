@@ -1,9 +1,6 @@
 ﻿using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class GrabMan : MonoBehaviour
 {
@@ -14,8 +11,8 @@ public class GrabMan : MonoBehaviour
     Camera cam;
 
     // Controller Haptics
-    public XRNode inputSource = XRNode.RightHand;
-    private InputDevice targetDevice;
+    //public XRNode inputSource = XRNode.RightHand;
+    //private InputDevice targetDevice;
     private bool isHapticSupported;
 
     private float defaultDuration = 0.5f;
@@ -25,12 +22,12 @@ public class GrabMan : MonoBehaviour
     // Init
     bool initTower = true;
     bool initBase = true;
-    public ARRaycastManager arRaycastManager;
-    public ARPlaneManager arPlaneManager;
+    //public ARRaycastManager arRaycastManager;
+    //public ARPlaneManager arPlaneManager;
 
 
     [Header("Object Spawner")]
-    public ObjectSpawner objectSpawner;
+    //public ObjectSpawner objectSpawner;
 
 
     // Grab
@@ -181,31 +178,40 @@ public class GrabMan : MonoBehaviour
     {
         Vector3 pos;
 
-        ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
+        //ObjectSpawner objectSpawner = GetComponent<ObjectSpawner>();
 
-        if(objectSpawner != null)
+        //if(objectSpawner != null)
+        //{
+        //    Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
+        //    Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
+
+        //    bool spawnSuccessful = objectSpawner.TrySpawnObject(spawnPoint, spawnNormal);
+
+        //    if (spawnSuccessful)
+        //    {
+        //        //active
+        //       //if (!Base.inst.gameObject.active)
+        //       //{
+
+        //       //     Base.inst.gameObject.SetActive(true);
+
+
+        //       //     activeBaseEvent.Invoke();
+        //       //}
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+
+        if (!Base.inst.gameObject.active)
         {
-            Vector3 spawnPoint = new Vector3(1f, 1f, 1f);
-            Vector3 spawnNormal = new Vector3(0.0f, 0.0f, 0.0f);
 
-            bool spawnSuccessful = objectSpawner.TrySpawnObject(spawnPoint, spawnNormal);
+            Base.inst.gameObject.SetActive(true);
 
-            if (spawnSuccessful)
-            {
-                //active
-               if (!Base.inst.gameObject.active)
-               {
-                    
-                    Base.inst.gameObject.SetActive(true);
-                    
 
-                    activeBaseEvent.Invoke();
-               }
-            }
-            else
-            {
-
-            }
+            activeBaseEvent.Invoke();
         }
 
 
@@ -218,13 +224,13 @@ public class GrabMan : MonoBehaviour
         }
     }
 
-    public void TurnOffPlanes()
-    {
-        foreach (var plane in arPlaneManager.trackables)
-        {
-            plane.gameObject.SetActive(false);
-        }
-    }
+    //public void TurnOffPlanes()
+    //{
+    //    foreach (var plane in arPlaneManager.trackables)
+    //    {
+    //        plane.gameObject.SetActive(false);
+    //    }
+    //}
 
 
     public void Grab(Tower tower)

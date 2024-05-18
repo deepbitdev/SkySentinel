@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.XR;
 
 public static class Tool
 {
-    public static XRNode inputSource = XRNode.RightHand;
+    //public static XRNode inputSource = XRNode.RightHand;
     private static bool previousButtonState = false;
 
     
@@ -41,12 +38,14 @@ public static class Tool
     {
         //return Input.GetMouseButtonDown(0) && (!rt || MouseInRT(rt) == on);
 
-        bool currentButtonState = false;
-        InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
+        //bool currentButtonState = false;
+        //InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
 
         bool mouseInside = rt == null || MouseInRT(rt) == on;
 
-        return currentButtonState && mouseInside;
+        //return currentButtonState && mouseInside;
+
+        return mouseInside;
 
     }
 
@@ -69,47 +68,47 @@ public static class Tool
     }
 
 
-    public static bool ScreenCenterHitAR(Camera cam, ARRaycastManager arRaycastManager, out Vector3 pos)
-    {
-        Vector3 center = cam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+    //public static bool ScreenCenterHitAR(Camera cam, ARRaycastManager arRaycastManager, out Vector3 pos)
+    //{
+    //    Vector3 center = cam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
 
-        List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        if (arRaycastManager.Raycast(center, hits, TrackableType.All))
-        {
-            pos = hits[0].pose.position;
-            return true;
-        }
+    //    List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    //    if (arRaycastManager.Raycast(center, hits, TrackableType.All))
+    //    {
+    //        pos = hits[0].pose.position;
+    //        return true;
+    //    }
 
-        pos = Vector3.zero;
-        return false;
-    }
+    //    pos = Vector3.zero;
+    //    return false;
+    //}
 
-    public static bool LineHitAR(ARRaycastManager arRaycastManager, LineRenderer lineRenderer, float segmentLength, out Vector3 hitPosition)
-    {
-        hitPosition = Vector3.zero;
+    //public static bool LineHitAR(ARRaycastManager arRaycastManager, LineRenderer lineRenderer, float segmentLength, out Vector3 hitPosition)
+    //{
+    //    hitPosition = Vector3.zero;
 
-        Vector3 startPoint = lineRenderer.GetPosition(0);
-        int numSegments = Mathf.CeilToInt(lineRenderer.positionCount / segmentLength);
+    //    Vector3 startPoint = lineRenderer.GetPosition(0);
+    //    int numSegments = Mathf.CeilToInt(lineRenderer.positionCount / segmentLength);
 
-        for (int i = 0; i < numSegments; i++)
-        {
-            Vector3 endPoint = lineRenderer.GetPosition(i + 1);
-            Vector3 rayDirection = endPoint - startPoint;
+    //    for (int i = 0; i < numSegments; i++)
+    //    {
+    //        Vector3 endPoint = lineRenderer.GetPosition(i + 1);
+    //        Vector3 rayDirection = endPoint - startPoint;
 
-            Ray ray = new Ray(startPoint, rayDirection);
+    //        Ray ray = new Ray(startPoint, rayDirection);
 
-            List<ARRaycastHit> hits = new List<ARRaycastHit>();
-            if (arRaycastManager.Raycast(ray, hits, TrackableType.All))
-            {
-                hitPosition = hits[0].pose.position;
-                return true;
-            }
+    //        List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    //        if (arRaycastManager.Raycast(ray, hits, TrackableType.All))
+    //        {
+    //            hitPosition = hits[0].pose.position;
+    //            return true;
+    //        }
 
-            startPoint = endPoint;
-        }
+    //        startPoint = endPoint;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
     public static bool LineHit(LineRenderer lineRenderer, out Vector3 pos, int layer = -1)
     {

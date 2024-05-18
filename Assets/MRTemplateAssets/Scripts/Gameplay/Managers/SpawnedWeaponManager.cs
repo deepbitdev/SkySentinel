@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class SpawnedWeaponManager : MonoBehaviour
 {
