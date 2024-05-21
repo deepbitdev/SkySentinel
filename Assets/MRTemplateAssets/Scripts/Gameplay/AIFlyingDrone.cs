@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using UnityEngine;
+
 public class AIFlyingDrone : MonoBehaviour
 {
     private enum State
@@ -7,7 +9,6 @@ public class AIFlyingDrone : MonoBehaviour
         Idle,
         Patrol,
         Attack,
-        FlyAway,
         Death
     }
 
@@ -27,7 +28,6 @@ public class AIFlyingDrone : MonoBehaviour
     public Vector3 spawnPoint; // The spawning point of the drone
 
     private Vector3 currentPatrolPoint;
-    private Vector3 flyAwayPoint;
 
     private float hoverAmplitude = 0.5f;
     private float hoverFrequency = 1f;
@@ -40,13 +40,18 @@ public class AIFlyingDrone : MonoBehaviour
 
     public GameObject explosionPrefab; // Prefab for explosion effect
 
+    public float dtShot = 1;
+    public float damageProj = 10;
+    public ParticleSystem shotParticle;
+    public Transform firePoint;
+    public Projectil projectil;
+
     void Start()
     {
-        currentState = State.FlyAway;
+        currentState = State.Idle;
         attackTimer = attackCooldown;
         initialPosition = transform.position;
         spawnPoint = transform.position; // Assuming spawn point is the initial position
-        SetFlyAwayPoint();
 
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth = 0.05f;
@@ -69,13 +74,12 @@ public class AIFlyingDrone : MonoBehaviour
             case State.Attack:
                 Attack();
                 break;
-            case State.FlyAway:
-                FlyAway();
-                break;
             case State.Death:
                 Death();
                 break;
         }
+
+        target = FindNearestEnemy();
 
         UpdateLineRenderer();
     }
@@ -84,21 +88,25 @@ public class AIFlyingDrone : MonoBehaviour
     {
         Hover();
 
-        if (Vector3.Distance(transform.position, target.position) <= detectionRange)
+        Transform nearestEnemy = FindNearestEnemy();
+
+        if (nearestEnemy != null && Vector3.Distance(transform.position, nearestEnemy.position) <= detectionRange)
         {
+            target = nearestEnemy;
             currentState = State.Patrol;
         }
     }
 
     private void Patrol()
     {
-        RotateTowards(target.position);
-        MoveTowards(currentPatrolPoint);
-
-        if (Vector3.Distance(transform.position, currentPatrolPoint) <= 0.2f)
+        if (target == null)
         {
-            SetRandomPatrolPoint();
+            currentState = State.Idle;
+            return;
         }
+
+        RotateTowards(target.position);
+        MoveTowards(target.position);
 
         if (Vector3.Distance(transform.position, target.position) <= attackRange)
         {
@@ -112,6 +120,12 @@ public class AIFlyingDrone : MonoBehaviour
 
     private void Attack()
     {
+        if (target == null)
+        {
+            currentState = State.Idle;
+            return;
+        }
+
         RotateTowards(target.position);
         if (Vector3.Distance(transform.position, target.position) > attackRange)
         {
@@ -137,16 +151,6 @@ public class AIFlyingDrone : MonoBehaviour
         }
     }
 
-    private void FlyAway()
-    {
-        MoveTowards(flyAwayPoint);
-
-        if (Vector3.Distance(transform.position, flyAwayPoint) <= 0.2f)
-        {
-            currentState = State.Idle;
-        }
-    }
-
     private void Death()
     {
         transform.position += Vector3.down * fallSpeed * Time.deltaTime;
@@ -161,13 +165,11 @@ public class AIFlyingDrone : MonoBehaviour
     private void Explode()
     {
         // Instantiate explosion prefab at the drone's position
-        // GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        explosionPrefab.transform.parent = transform;
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         // Make the explosion prefab a child of the drone
-        // explosion.transform.parent = transform;
+        explosion.transform.parent = transform;
         // Destroy the explosion prefab after 3 seconds
-        //Destroy(explosion, 6f);
+        Destroy(explosion, 3f);
     }
 
     private void MoveTowards(Vector3 destination)
@@ -180,6 +182,27 @@ public class AIFlyingDrone : MonoBehaviour
     {
         Debug.Log("Drone attacks the target!");
         // Implement actual attack logic here (e.g., reducing target health)
+        Shot();
+    }
+
+    protected virtual void Shot()
+    {
+        Projectil p = Instantiate(projectil, firePoint.position, firePoint.rotation);
+        p.damage = damageProj;
+
+        ParticleSystem sp = Instantiate(shotParticle, firePoint.position, firePoint.rotation);
+        Destroy(sp.gameObject, 1);
+    }
+
+    protected Enemy SearchEnemy(Transform body)
+    {
+        Transform parent = body.parent;
+        if (parent)
+        {
+            Enemy enemy = parent.GetComponent<Enemy>();
+            if (enemy) return enemy;
+        }
+        return null;
     }
 
     private void SetRandomPatrolPoint()
@@ -188,14 +211,6 @@ public class AIFlyingDrone : MonoBehaviour
         float x = islandCenter.x + islandRadius * Mathf.Cos(randomAngle);
         float z = islandCenter.z + islandRadius * Mathf.Sin(randomAngle);
         currentPatrolPoint = new Vector3(x, transform.position.y, z);
-    }
-
-    private void SetFlyAwayPoint()
-    {
-        float randomAngle = Random.Range(0f, 2f * Mathf.PI);
-        float x = spawnPoint.x + flyAwayRadius * Mathf.Cos(randomAngle);
-        float z = spawnPoint.z + flyAwayRadius * Mathf.Sin(randomAngle);
-        flyAwayPoint = new Vector3(x, transform.position.y, z);
     }
 
     private void Hover()
@@ -224,6 +239,25 @@ public class AIFlyingDrone : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
+    private Transform FindNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Transform nearestEnemy = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestEnemy = enemy.transform;
+            }
+        }
+
+        return nearestEnemy;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -233,3 +267,4 @@ public class AIFlyingDrone : MonoBehaviour
         }
     }
 }
+
