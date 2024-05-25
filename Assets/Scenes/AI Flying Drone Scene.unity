@@ -624,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7206527243199875070, guid: e86fa22161811a247ac50d55bd2223f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.769
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7206527243199875070, guid: e86fa22161811a247ac50d55bd2223f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -681,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4761215636187675034, guid: bc0bcf6840090f049a57acb7f3001f4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4761215636187675034, guid: bc0bcf6840090f049a57acb7f3001f4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1729,18 +1729,11 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 2
   attackCooldown: 2
-  islandCenter: {x: 0, y: 0, z: 0}
-  islandRadius: 20
-  flyAwayRadius: 15
-  spawnPoint: {x: 0, y: 0, z: 0}
   health: 100
   fallSpeed: 2
   explosionPrefab: {fileID: 0}
-  dtShot: 1
-  damageProj: 10
-  shotParticle: {fileID: 0}
-  firePoint: {fileID: 0}
-  projectil: {fileID: 0}
+  islandCenter: {x: 0, y: 0, z: 0}
+  islandRadius: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

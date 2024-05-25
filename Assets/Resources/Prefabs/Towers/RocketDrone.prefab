@@ -192,7 +192,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -2.1648903e-17, y: -0.7071068, z: -2.1648903e-17, w: 0.7071068}
   m_LocalPosition: {x: -0.00012141, y: -0.0036646, z: 0.044149}
-  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6500654689875861671}
@@ -927,7 +927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7206527243199875070}
   - component: {fileID: 6456117197623532712}
-  - component: {fileID: 5838251293834996279}
+  - component: {fileID: 374432983945692041}
   m_Layer: 0
   m_Name: RocketDrone
   m_TagString: Untagged
@@ -944,7 +944,7 @@ Transform:
   m_GameObject: {fileID: 6071083220226917895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.769, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -972,7 +972,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5838251293834996279
+--- !u!114 &374432983945692041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6071083220226917895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c6205158bf214d4787c597fe5e67fa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3915980411795fa4bbc0a3bbd6075eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
@@ -991,13 +991,11 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 2
   attackCooldown: 2
-  islandCenter: {x: 0, y: 0, z: 0}
-  islandRadius: 20
-  flyAwayRadius: 15
-  spawnPoint: {x: 0, y: 0, z: 0}
   health: 100
   fallSpeed: 2
   explosionPrefab: {fileID: 2543025494709478222, guid: c306ec3d8b375427ba0eb28789062f24, type: 3}
+  islandCenter: {x: 0, y: 0, z: 0}
+  islandRadius: 20
   dtShot: 1
   damageProj: 10
   shotParticle: {fileID: 64592909447337373, guid: 087a82f8f5ba14f019fbb41bfc37d18f, type: 3}

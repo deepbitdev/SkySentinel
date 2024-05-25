@@ -16811,6 +16811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
+  - {fileID: 4610145239993952049, guid: 6fa83344a6a706143a7f69f36452e4ab, type: 3}
   - {fileID: 4610145239993952049, guid: bc0bcf6840090f049a57acb7f3001f4a, type: 3}
   - {fileID: 6071083220226917895, guid: e86fa22161811a247ac50d55bd2223f2, type: 3}
   - {fileID: 4750345693117095812, guid: e8d7cd957e29c46c28550efcc9c79644, type: 3}

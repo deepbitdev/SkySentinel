@@ -1,8 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
-public class AIFlyingDrone : MonoBehaviour
+public class TurretDrone : MonoBehaviour
 {
     private enum State
     {
@@ -42,12 +42,21 @@ public class AIFlyingDrone : MonoBehaviour
     public float islandRadius = 20f;
     private Vector3 currentPatrolPoint;
 
-    //[Space]
-    //[Space]
-    //[Header("Drone Hover Functionality")]
-    //private float hoverAmplitude = 0.5f;
-    //private float hoverFrequency = 1f;
+    [Space]
+    [Space]
+    [Header("Drone Hover Functionality")]
+    private float hoverAmplitude = 0.5f;
+    private float hoverFrequency = 1f;
     private Vector3 initialPosition;
+
+    [Space]
+    [Space]
+    [Header("Projectile Type and Settings")]
+    public float dtShot = 1;
+    public float damageProj = 10;
+    public ParticleSystem shotParticle;
+    public Transform firePoint;
+    public Projectil projectil;
 
     void Start()
     {
@@ -78,7 +87,7 @@ public class AIFlyingDrone : MonoBehaviour
 
     private void Idle()
     {
-        //Hover();
+        // Hover();
 
         Transform nearestEnemy = FindNearestEnemy();
 
@@ -199,6 +208,16 @@ public class AIFlyingDrone : MonoBehaviour
     private void PerformAttack()
     {
         Debug.Log("Drone attacks the target!");
+        Shot();
+    }
+
+    protected virtual void Shot()
+    {
+        Projectil p = Instantiate(projectil, firePoint.position, firePoint.rotation);
+        p.damage = damageProj;
+
+        ParticleSystem sp = Instantiate(shotParticle, firePoint.position, firePoint.rotation);
+        Destroy(sp.gameObject, 1);
     }
 
     private void SetRandomPatrolPoint()
@@ -209,10 +228,9 @@ public class AIFlyingDrone : MonoBehaviour
         currentPatrolPoint = new Vector3(x, transform.position.y, z);
     }
 
-    //private void Hover()
-    //{
-    //    float hoverOffset = Mathf.Sin(Time.time * hoverFrequency) * hoverAmplitude;
-    //    transform.position = new Vector3(transform.position.x, initialPosition.y + hoverOffset, transform.position.z);
-    //}
+    // private void Hover()
+    // {
+    //     float hoverOffset = Mathf.Sin(Time.time * hoverFrequency) * hoverAmplitude;
+    //     transform.position = new Vector3(transform.position.x, initialPosition.y + hoverOffset, transform.position.z);
+    // }
 }
-
