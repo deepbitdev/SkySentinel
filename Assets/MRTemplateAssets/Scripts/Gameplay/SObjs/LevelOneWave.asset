@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcaffabb01dc488ebcca50f384c7062, type: 3}
+  m_Name: LevelOneWave
+  m_EditorClassIdentifier: 
+  enemiesPrefabs:
+  - {fileID: 2752821103250354709, guid: 0aecffc4472b0410ea83b23e8ee272fc, type: 3}
+  - {fileID: 6734409048745749497, guid: 442e246f645634de9a496c15c9e0a875, type: 3}
+  - {fileID: 6734409048745749497, guid: 15682da02144a3e4ab6994db852c8a7c, type: 3}
+  - {fileID: 615433609746476236, guid: c6c536874eb635847861ccd7e856e4fc, type: 3}
+  - {fileID: -2709802480232972198, guid: 53ec6d2677e329748a22b72ea6317a0b, type: 3}
+  - {fileID: 8725032864806529228, guid: a6b3eb25a77f8ba4d85a1ec1e2fb533a, type: 3}
+  - {fileID: 341886547311554466, guid: 600659568fbd91f4e9048f270bb5161b, type: 3}
+  moneyTotEnemies: 100
+  coefCost: 1.3
+  dtEnemy: 0.3
+  maxWaves: 10
+  bossPrefab: {fileID: 615433609746476236, guid: c6c536874eb635847861ccd7e856e4fc, type: 3}
+  hasBossBattle: 1
