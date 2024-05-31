@@ -22,9 +22,21 @@ public class WaveMan : MonoBehaviour
     public static bool inWave = false;
     [HideInInspector] public int wave = 1;
 
+
+    private Dictionary<string, int> waveLimits = new Dictionary<string, int>()
+    {
+        { "easy", 25},
+        {"medium", 35},
+        {"hard", 50}
+    };
+
+    private int currentWaveLimit = 30;
+
     void Awake()
     {
         inst = this;
+
+        SetWaveLimit("easy");
     }
 
 
@@ -55,16 +67,24 @@ public class WaveMan : MonoBehaviour
             else if (Enemy.enemies.Count == 0 && crtMoneyEnemies == 0 && !Base.inst.died)
                 EndWave();
         }
-
-        if (wave != 3)
-        {
-            Debug.Log(" Wave Event Still Going!");
-        }
         
-        if (wave == 10)
+        if (wave == currentWaveLimit)
         {
             Debug.Log(" Wave Event Had Ended! ");
             MissionComplete();
+        }
+    }
+
+    public void SetWaveLimit(string label)
+    {
+        if(waveLimits.ContainsKey(label))
+        {
+            currentWaveLimit = waveLimits[label];
+            Debug.Log($"Wave limit set to {currentWaveLimit} for label '{label}'.");
+        }
+        else
+        {
+            Debug.LogError($"Wave limit for label '{label}' is not found.");
         }
     }
 
@@ -72,8 +92,6 @@ public class WaveMan : MonoBehaviour
     {
         successEvent.Invoke();
         inWave = false;
-
-        // Add controller haptic event for success!
     }
 
     void SpawnEnemy(Enemy enemyPrefab)
