@@ -68,11 +68,14 @@ public class WaveMan : MonoBehaviour
                 EndWave();
         }
         
-        if (wave == currentWaveLimit)
+        if (wave >= currentWaveLimit)
         {
             Debug.Log(" Wave Event Had Ended! ");
             MissionComplete();
         }
+
+        //waveInfo.text = "Wave " + wave.ToString();
+        waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
     }
 
     public void SetWaveLimit(string label)
@@ -116,7 +119,8 @@ public class WaveMan : MonoBehaviour
     {
         wave++;
         moneyTotEnemies *= coefCost;
-        waveInfo.text = "Wave " + wave;
+        waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
+        //waveInfo.text = "Wave " + wave.ToString();
         //waveNumber.text = wave.ToString();
         inWave = false;
         // LevelSys.instance.GainExperienceFlatRate(20);
