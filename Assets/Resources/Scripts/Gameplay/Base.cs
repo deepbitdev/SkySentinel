@@ -70,6 +70,7 @@ public class Base : MonoBehaviour
 
     void Die() {
         died = true;
+        WaveMan.inst.MissionFailure();
         StartCoroutine(Explose());
 
         //Decompose(scale.transform);

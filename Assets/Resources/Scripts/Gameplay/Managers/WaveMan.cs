@@ -17,6 +17,12 @@ public class WaveMan : MonoBehaviour
     float tNextEnemy;
 
     public TMP_Text waveInfo;
+    
+    [Space]
+    [Space]
+    [Header("Mission Status Text")]
+    public TMP_Text missionStatusTxt;
+
     //public TMP_Text waveNumber;
     public UnityEvent startWaveEvent, endWaveEvent, successEvent;
     public static bool inWave = false;
@@ -25,18 +31,21 @@ public class WaveMan : MonoBehaviour
 
     private Dictionary<string, int> waveLimits = new Dictionary<string, int>()
     {
-        { "easy", 25},
+        {"debug", 5},
+        {"easy", 25},
         {"medium", 35},
         {"hard", 50}
     };
 
-    private int currentWaveLimit = 30;
+    private int currentWaveLimit;
 
     void Awake()
     {
         inst = this;
 
-        SetWaveLimit("easy");
+        SetWaveLimit("debug");
+
+        missionStatusTxt.text = "";
     }
 
 
@@ -95,6 +104,13 @@ public class WaveMan : MonoBehaviour
     {
         successEvent.Invoke();
         inWave = false;
+        missionStatusTxt.text = "Mission Complete!";
+    }
+
+    public void MissionFailure()
+    {
+        inWave = false; 
+        missionStatusTxt.text = "Mission Failure... You failed to protect the base!";
     }
 
     void SpawnEnemy(Enemy enemyPrefab)
