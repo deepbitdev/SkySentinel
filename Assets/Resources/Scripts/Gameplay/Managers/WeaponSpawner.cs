@@ -56,15 +56,25 @@ public class WeaponSpawner : MonoBehaviour
         //    canSpawn = true; // Reset the flag when the trigger is released
         //}
 
-        if(canSpawn && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        if (canSpawn && OVRInput.Get(OVRInput.Button.One))
         {
             SpawnObject();
             canSpawn = false; // Set flag to prevent rapid spawning, adjust as needed
         }
-        else if(!OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && !canSpawn)
+        else if (!OVRInput.Get(OVRInput.Button.One) && !canSpawn)
         {
             canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
         }
+
+        //if (canSpawn && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        //{
+        //    SpawnObject();
+        //    canSpawn = false; // Set flag to prevent rapid spawning, adjust as needed
+        //}
+        //else if(!OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && !canSpawn)
+        //{
+        //    canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
+        //}
 
         UpdateFollowingObjectPosition();
     }

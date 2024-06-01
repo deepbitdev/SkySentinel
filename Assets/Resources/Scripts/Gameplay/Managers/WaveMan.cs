@@ -24,7 +24,7 @@ public class WaveMan : MonoBehaviour
     public TMP_Text missionStatusTxt;
 
     //public TMP_Text waveNumber;
-    public UnityEvent startWaveEvent, endWaveEvent, successEvent;
+    public UnityEvent startWaveEvent, endWaveEvent, successEvent, failureEvent;
     public static bool inWave = false;
     [HideInInspector] public int wave = 1;
 
@@ -109,6 +109,7 @@ public class WaveMan : MonoBehaviour
 
     public void MissionFailure()
     {
+        failureEvent.Invoke();
         inWave = false; 
         missionStatusTxt.text = "Mission Failure... You failed to protect the base!";
     }
