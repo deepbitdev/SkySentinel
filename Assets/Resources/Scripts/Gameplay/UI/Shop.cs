@@ -1,6 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.IO;
+using System;
 
 public class Shop : MonoBehaviour
 {
@@ -8,71 +10,79 @@ public class Shop : MonoBehaviour
 
     public Animator animator;
 
-    //public RectTransform wirst, body;
-
     public int money;
-    //public TMP_Text moneyText;
+    public string playerName;
 
     public const string moneyKey = "$";
+    private const string moneyFilePath = "money.json";
 
-    //public UnityEvent moneyChangedEvent;
 
     void Awake()
     {
         inst = this;
-        // moneyText.text = money + " $";
-        //moneyChangedEvent.Invoke();
+        LoadPlayerInfo();
+    }
 
-        // update tower shop
-        //moneyText.text = PlayerPrefs.GetInt("money").ToString();
+    void LoadPlayerInfo()
+    {
+        if(File.Exists(GetPlayerInfoFilePath()))
+        {
+            string json = File.ReadAllText(GetPlayerInfoFilePath());
+            MoneyData moneyData = JsonUtility.FromJson<MoneyData>(json);
+            this.money = moneyData.money;
+        }
+        else
+        {
+            this.money = 0;
+        }
+    }
+
+    private string GetPlayerInfoFilePath()
+    {
+        return Path.Combine(Application.persistentDataPath, moneyFilePath);
     }
 
 
-    //public RectTransform canvas;
-    //void Update()
-    //{
-    //    if (IsOpened())
-    //    {
-    //        if (Tool.Click(body, false))
-    //            Close();
-    //    }
-
-
-    //    else if (IsClosed())
-    //    {
-    //        if (Tool.Click(wirst))
-    //            Open();
-    //    }
-    //}
-
-    //public bool IsOpened() { return Tool.AnimIs(animator, "Shop Opened"); }
-    //public bool IsClosed() { return Tool.AnimIs(animator, "Shop Closed"); }
-
-    //public void Open()  => animator.SetTrigger("open");
-    //public void Close() => animator.SetTrigger("close");
-    //public void SetClosedAnim() => animator.Play("Shop Closed");
-
-
-    
-
     private void OnDisable()
     {
-        PlayerPrefs.SetInt("money", money);
-        PlayerPrefs.Save();
+        SavePlayerInfo();
     }
 
     void Reset()
     {
-        PlayerPrefs.DeleteAll();
+        File.Delete(GetPlayerInfoFilePath());
     }
 
 
     public void AddMoney(int m) {
-        PlayerPrefs.SetInt("money", m);
-        PlayerPrefs.Save();
+
         
         money += m;
-        //moneyText.text = money + " $";
-        //moneyChangedEvent.Invoke();
+        SavePlayerInfo();
+    }
+
+    private void SavePlayerInfo()
+    {
+        PlayerInfo playerInfo = new PlayerInfo
+        {
+            playerName = this.playerName,
+            funds = this.money,
+            lastSaveTimestamp = DateTime.Now.ToString("o")
+        };
+        string json = JsonUtility.ToJson(playerInfo);
+        File.WriteAllText(GetPlayerInfoFilePath(), json);
+    }
+
+    private void SaveFunds()
+    {
+        MoneyData moneyData = new MoneyData {  money = this.money };
+        string json = JsonUtility.ToJson(moneyData);
+        File.WriteAllText(GetPlayerInfoFilePath(), json);
+    }
+
+    [System.Serializable]
+    private class MoneyData
+    {
+        public int money;
     }
 }

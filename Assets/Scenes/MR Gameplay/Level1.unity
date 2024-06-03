@@ -582,8 +582,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.16526, y: 0}
-  m_SizeDelta: {x: 742.0518, y: 641.68896}
+  m_AnchoredPosition: {x: 0.11195, y: 0}
+  m_SizeDelta: {x: 495.14154, y: 641.68896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33974786
 MonoBehaviour:
@@ -2528,6 +2528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 199400899}
   money: 500
+  playerName: 
 --- !u!95 &199400899
 Animator:
   serializedVersion: 5
@@ -4690,6 +4691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 332454093}
   money: 500
+  playerName: 
 --- !u!95 &332454093
 Animator:
   serializedVersion: 5
@@ -6184,6 +6186,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438516756}
   m_CullTransparentMesh: 0
+--- !u!1 &442650667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442650669}
+  - component: {fileID: 442650668}
+  m_Layer: 0
+  m_Name: Player Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &442650668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442650667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8e68e53c00d6b41a7d66691d2589f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  playerName: 
+--- !u!4 &442650669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442650667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07327639, y: -0.045035444, z: -0.0010039699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443820687
 GameObject:
   m_ObjectHideFlags: 0
@@ -7303,7 +7351,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -81.2}
-  m_SizeDelta: {x: -385.9, y: 560.5}
+  m_SizeDelta: {x: 0.000030518, y: 560.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &509524664
 MonoBehaviour:
@@ -7322,7 +7370,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 276
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 165.2, y: 154.8}
@@ -10238,6 +10286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 199400899}
   money: 500
+  playerName: 
 --- !u!4 &688798491
 Transform:
   m_ObjectHideFlags: 0
@@ -12760,10 +12809,9 @@ MonoBehaviour:
   enemiesPrefabs:
   - {fileID: 2752821103250354709, guid: 0aecffc4472b0410ea83b23e8ee272fc, type: 3}
   - {fileID: 615433609746476236, guid: c6c536874eb635847861ccd7e856e4fc, type: 3}
-  - {fileID: 6734409048745749497, guid: 15682da02144a3e4ab6994db852c8a7c, type: 3}
-  - {fileID: -2709802480232972198, guid: 53ec6d2677e329748a22b72ea6317a0b, type: 3}
-  - {fileID: 8725032864806529228, guid: a6b3eb25a77f8ba4d85a1ec1e2fb533a, type: 3}
-  - {fileID: 341886547311554466, guid: 600659568fbd91f4e9048f270bb5161b, type: 3}
+  - {fileID: 6205443871228028719, guid: 050a07edb0ca4e644b105491246b2a0c, type: 3}
+  - {fileID: 8152033713649632079, guid: ea57f2300e642b2419575792d69bed69, type: 3}
+  - {fileID: 2119135176224574117, guid: 8a7538b434329f74197db70d1b902e1d, type: 3}
   moneyTotEnemies: 100
   coefCost: 1.2
   dtEnemy: 1
@@ -25847,7 +25895,7 @@ GameObject:
   - component: {fileID: 2135316704}
   - component: {fileID: 2135316703}
   m_Layer: 0
-  m_Name: Player Manager
+  m_Name: PlayerShooting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46355,13 +46403,14 @@ SceneRoots:
   - {fileID: 215931552}
   - {fileID: 1615728350}
   - {fileID: 212037335}
-  - {fileID: 156721013}
   - {fileID: 1420395986}
   - {fileID: 2135316704}
+  - {fileID: 156721013}
   - {fileID: 688798491}
   - {fileID: 39487648}
   - {fileID: 1424959181}
   - {fileID: 957889902}
+  - {fileID: 442650669}
   - {fileID: 1031603754}
   - {fileID: 449996487}
   - {fileID: 75140133}

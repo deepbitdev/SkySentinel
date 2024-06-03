@@ -86,8 +86,8 @@ public class SightTower : Sight
 
             // upButtText.text = "UP:"+ target.upCost + " $ ";
             upButtText.text = "UPGRADE";
-            if (target.upCost < Shop.inst.money)
-                 upButtText.color = colorUpButt;
+            if (target.upCost < PlayerManager.instance.money)
+                upButtText.color = colorUpButt;
             else upButtText.color = colorUpButtDesable;
 
             // sellButtText.text = "SELL:" + (int)(Tower.COEF_SELL * target.cost) + "$";
@@ -115,12 +115,12 @@ public class SightTower : Sight
 
 
     public void UpTower() {
-        if (target && Shop.inst.money >= target.upCost) target.Up();
+        if (target && PlayerManager.instance.money >= target.upCost) target.Up();
     }
 
     public void SellTower() {
         if (target) {
-            Shop.inst.AddMoney((int)(Tower.COEF_SELL * target.cost));
+            PlayerManager.instance.AddMoney((int)(Tower.COEF_SELL * target.cost));
             Destroy(target.gameObject);
         }
     }
