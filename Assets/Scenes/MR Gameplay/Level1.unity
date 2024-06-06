@@ -12807,11 +12807,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefabs:
-  - {fileID: 2752821103250354709, guid: 0aecffc4472b0410ea83b23e8ee272fc, type: 3}
-  - {fileID: 615433609746476236, guid: c6c536874eb635847861ccd7e856e4fc, type: 3}
-  - {fileID: 6205443871228028719, guid: 050a07edb0ca4e644b105491246b2a0c, type: 3}
-  - {fileID: 8152033713649632079, guid: ea57f2300e642b2419575792d69bed69, type: 3}
-  - {fileID: 2119135176224574117, guid: 8a7538b434329f74197db70d1b902e1d, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
+  - {fileID: 4832150530432959071, guid: 2f0d82982e899bc41ae52541b212a02e, type: 3}
   moneyTotEnemies: 100
   coefCost: 1.2
   dtEnemy: 1

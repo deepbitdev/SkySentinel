@@ -56,8 +56,9 @@ public class Base : MonoBehaviour
 
     public void AddMisses(int miss)
     {
-        PlayerPrefs.SetInt("misses", miss);
-        PlayerPrefs.Save();
+        // Replacing this with saving to JSON!
+        //PlayerPrefs.SetInt("misses", miss);
+        //PlayerPrefs.Save();
 
         misses += miss;
     }
