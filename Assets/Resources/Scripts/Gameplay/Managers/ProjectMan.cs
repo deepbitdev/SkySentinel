@@ -21,7 +21,7 @@ public class ProjectMan : MonoBehaviour
 
     // Device
     public static bool test;
-    public GameObject AR, NAR;
+    public GameObject AR;
     public Camera ARcam, NARcam;
     [HideInInspector] public Camera cam;
 
@@ -30,13 +30,13 @@ public class ProjectMan : MonoBehaviour
     {
         inst = this;
 
-        LayerMask_NAR_Ground  = LayerMask.GetMask("NAR Ground");
+        //LayerMask_NAR_Ground  = LayerMask.GetMask("NAR Ground");
         LayerMask_TowerGround = LayerMask.GetMask("Tower Ground");
         LayerMask_BaseGround  = LayerMask.GetMask("Base Ground");
         LayerMask_ForceField  = LayerMask.GetMask("Force Field");
 
         AR.SetActive(!test);
-        NAR.SetActive(test);
+        //NAR.SetActive(test);
         if (test) cam = NARcam;
         else      cam = ARcam;
     }

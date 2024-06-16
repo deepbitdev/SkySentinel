@@ -5252,7 +5252,7 @@ MonoBehaviour:
   laserSpawnPoint: {fileID: 7054939925565476980}
   laserSpeed: 20
   fireRate: 1
-  detectionRange: 30
+  detectionRange: 7
 --- !u!1 &7518791739642095296
 GameObject:
   m_ObjectHideFlags: 0

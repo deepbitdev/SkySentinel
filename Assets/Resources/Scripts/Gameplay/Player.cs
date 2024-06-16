@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public float overloadShot = 0.2f;
     float overload = 0;
     bool reload = false;
-    public RawImage overloadBar;
+    //public RawImage overloadBar;
     // public TMP_Text overloadPercent;
     public Gradient overloadGradient;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        UpdateOverload();
+        //UpdateOverload();
 
         bool currentButtonState = false;
         InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
@@ -78,20 +78,20 @@ public class Player : MonoBehaviour
 
 
 
-    void UpdateOverload() {
-        overload = Mathf.Max(overload - Time.deltaTime, 0);
-        if (overload == 0) reload = false;
+    //void UpdateOverload() {
+    //    overload = Mathf.Max(overload - Time.deltaTime, 0);
+    //    if (overload == 0) reload = false;
 
-        float progress = Tool.Progress(overload, t_overload);
-        progress = Mathf.Clamp(progress, 0, 1);
-        // overloadPercent.text = (int)(progress * 100)+"%";
-        progress = Mathf.Max(progress, 0.01f);
-        Vector3 scale = overloadBar.rectTransform.localScale;
-        scale.x = progress;
-        overloadBar.rectTransform.localScale = scale;
-        if (reload) overloadBar.color = overloadGradient.Evaluate(1);
-        else overloadBar.color = overloadGradient.Evaluate(progress);
-    }
+    //    float progress = Tool.Progress(overload, t_overload);
+    //    progress = Mathf.Clamp(progress, 0, 1);
+    //    // overloadPercent.text = (int)(progress * 100)+"%";
+    //    progress = Mathf.Max(progress, 0.01f);
+    //    Vector3 scale = overloadBar.rectTransform.localScale;
+    //    scale.x = progress;
+    //    overloadBar.rectTransform.localScale = scale;
+    //    if (reload) overloadBar.color = overloadGradient.Evaluate(1);
+    //    else overloadBar.color = overloadGradient.Evaluate(progress);
+    //}
 
     void Shot()
     {

@@ -10071,4 +10071,4 @@ MonoBehaviour:
   laserSpawnPoint: {fileID: 7498027430491430785}
   laserSpeed: 20
   fireRate: 1
-  detectionRange: 30
+  detectionRange: 7

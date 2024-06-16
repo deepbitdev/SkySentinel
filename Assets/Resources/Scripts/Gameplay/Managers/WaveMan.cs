@@ -16,12 +16,12 @@ public class WaveMan : MonoBehaviour
     public float dtEnemy = 0.3f;
     float tNextEnemy;
 
-    public TMP_Text waveInfo;
+    //public TMP_Text waveInfo;
     
     [Space]
     [Space]
     [Header("Mission Status Text")]
-    public TMP_Text missionStatusTxt;
+    //public TMP_Text missionStatusTxt;
 
     //public TMP_Text waveNumber;
     public UnityEvent startWaveEvent, endWaveEvent, successEvent, failureEvent;
@@ -45,7 +45,7 @@ public class WaveMan : MonoBehaviour
 
         SetWaveLimit("debug");
 
-        missionStatusTxt.text = "";
+        //missionStatusTxt.text = "";
     }
 
 
@@ -84,7 +84,7 @@ public class WaveMan : MonoBehaviour
         }
 
         //waveInfo.text = "Wave " + wave.ToString();
-        waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
+        //waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
     }
 
     public void SetWaveLimit(string label)
@@ -104,14 +104,14 @@ public class WaveMan : MonoBehaviour
     {
         successEvent.Invoke();
         inWave = false;
-        missionStatusTxt.text = "Mission Complete!";
+        //missionStatusTxt.text = "Mission Complete!";
     }
 
     public void MissionFailure()
     {
         failureEvent.Invoke();
         inWave = false; 
-        missionStatusTxt.text = "Mission Failure... You failed to protect the base!";
+        //missionStatusTxt.text = "Mission Failure... You failed to protect the base!";
     }
 
     void SpawnEnemy(Enemy enemyPrefab)
@@ -136,7 +136,7 @@ public class WaveMan : MonoBehaviour
     {
         wave++;
         moneyTotEnemies *= coefCost;
-        waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
+        //waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
         //waveInfo.text = "Wave " + wave.ToString();
         //waveNumber.text = wave.ToString();
         inWave = false;

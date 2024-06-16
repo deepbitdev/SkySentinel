@@ -8,7 +8,7 @@ public class Shop : MonoBehaviour
 {
     public static Shop inst;
 
-    public Animator animator;
+    //public Animator animator;
 
     public int money;
     public string playerName;

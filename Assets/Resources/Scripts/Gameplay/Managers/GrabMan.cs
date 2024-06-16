@@ -32,7 +32,6 @@ public class GrabMan : MonoBehaviour
 
     // Grab
     //[SerializeField] public Tower tower;
-    public RectTransform rtCancelPurchase;
     bool replace = false;
 
     // Events
