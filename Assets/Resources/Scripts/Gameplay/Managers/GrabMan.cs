@@ -48,7 +48,7 @@ public class GrabMan : MonoBehaviour
 
     void Start()
     {
-        Base.inst.gameObject.SetActive(false);
+        Base.inst.gameObject.SetActive(true);
         test = ProjectMan.test;
         cam = ProjectMan.inst.cam;
     }
