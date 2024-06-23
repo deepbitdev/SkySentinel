@@ -8,7 +8,7 @@ public class Base : MonoBehaviour
 {
     public static Base inst;
     public SmoothTranslate smoothTranslate;
-    public Hologram hologram;
+    //public Hologram hologram;
     public Transform gravity;
     // public RectTransform lifeRT;
     // public TMP_Text lifePercent;

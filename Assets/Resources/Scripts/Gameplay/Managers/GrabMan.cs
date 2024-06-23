@@ -217,7 +217,7 @@ public class GrabMan : MonoBehaviour
         if (Base.inst.gameObject.active)
         {
             initBase = false;
-            Base.inst.hologram.Dissolve();
+            //Base.inst.hologram.Dissolve();
             ControllerHaptics.instance.EnvPlacementHaptic();
             placeBaseEvent.Invoke();
         }

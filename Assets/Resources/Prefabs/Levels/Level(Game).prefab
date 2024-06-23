@@ -1968,7 +1968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTranslate: {fileID: 3468925484397260394}
-  hologram: {fileID: 4518223523598229595}
   gravity: {fileID: 6021532567571650557}
   exploPrefab: {fileID: 1337198075554910, guid: 2964baa7d90d74ed19da5433e04545c5, type: 3}
   scale: {fileID: 1674701624426216715}

@@ -49,6 +49,19 @@ public class SightTower : Sight
             }
         }
 
+
+        if(OVRInput.Get(OVRInput.RawButton.Y))
+        {
+            UpTower();
+        }
+
+        if (OVRInput.Get(OVRInput.RawButton.X))
+        {
+            SellTower();
+        }
+
+
+
         //if (!WaveMan.inWave && !GrabMan.inst.tower)
         //{
         //    foreach (Tower t in Tower.towers)
