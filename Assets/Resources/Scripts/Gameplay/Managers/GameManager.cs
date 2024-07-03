@@ -1,26 +1,93 @@
+using SkySentinel.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class GameManager : MonoBehaviour
+using TMPro;
+using System;
+
+public class GameManager : Singleton<GameManager>
 {
-    [Header("Player Main Menu")]
-    public UnityEvent playerMenu;
+    [Header("Mission Success")]
+    public UnityEvent successEvent;
 
-    [Space]
-    [Space]
-    [Header("Entire Game")]
-    public UnityEvent game;
+    [Header("Mission Failure")]
+    public UnityEvent failureEvent;
 
+    public int playerScore = 0;
+    public int currentWave = 0;
+    public int enemiesDestroyed = 0;
+
+    [Header("Game Status")]
+    public TextMeshPro statusTxt;
+    public TextMeshPro gameStatusEvntTxt;
+
+    public TextMeshPro scoreTxt;
+    public TextMeshPro waveTxt;
+    public TextMeshPro enemiesDestroyedTxt;
 
     void Start()
     {
-        playerMenu.Invoke();
+        UpdateUI();
+
+        statusTxt.text = "";
+        gameStatusEvntTxt.text = "";
     }
 
-    public void OpenGame()
+    private void UpdateUI()
     {
-        game.Invoke();
+        scoreTxt.text = "Score: " + playerScore.ToString();
+        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
+        enemiesDestroyedTxt.text = "Enemies Destroyed: " + enemiesDestroyed.ToString();
+
+    }
+
+    public void AddScore(int amount)
+    {
+        playerScore += amount;
+        UpdateUI();
+    }
+
+    public void AddEnemiesDestroyed(int amount)
+    {
+        enemiesDestroyed += amount;
+        UpdateUI();
+    }
+
+    public void CheckGameOver()
+    {
+
+    }
+
+    void GameOver()
+    {
+
+    }
+
+    public void RestartGame()
+    {
+        playerScore = 0;
+        enemiesDestroyed = 0;
+        UpdateUI();
+
+    }
+
+    public void MissionComplete()
+    {
+        successEvent.Invoke();
+        Tower.towers.Clear();
+        statusTxt.text = "Area Cleared";
+        gameStatusEvntTxt.text = "You survived all waves";
+        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
+    }
+
+    public void MissionFailure()
+    {
+        failureEvent.Invoke();
+        Tower.towers.Clear();
+        statusTxt.text = "Defeat";
+        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
+        gameStatusEvntTxt.text = " Defeated at " + WaveMan.inst.wave.ToString();
     }
 
 }

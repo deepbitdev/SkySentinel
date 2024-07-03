@@ -24,7 +24,7 @@ public class WaveMan : MonoBehaviour
     //public TMP_Text missionStatusTxt;
 
     //public TMP_Text waveNumber;
-    public UnityEvent startWaveEvent, endWaveEvent, successEvent, failureEvent;
+    public UnityEvent startWaveEvent, endWaveEvent;
     public static bool inWave = false;
     [HideInInspector] public int wave = 1;
 
@@ -32,20 +32,22 @@ public class WaveMan : MonoBehaviour
     private Dictionary<string, int> waveLimits = new Dictionary<string, int>()
     {
         {"debug", 5},
+        {"LevelOne", 10},
+        {"LevelTwo", 25},
+        {"LevelThree", 30},
+        {"LevelFour", 40},
         {"easy", 25},
         {"medium", 35},
         {"hard", 50}
     };
 
-    private int currentWaveLimit;
+    public int currentWaveLimit;
 
     void Awake()
     {
         inst = this;
 
         SetWaveLimit("debug");
-
-        //missionStatusTxt.text = "";
     }
 
 
@@ -80,7 +82,7 @@ public class WaveMan : MonoBehaviour
         if (wave >= currentWaveLimit)
         {
             Debug.Log(" Wave Event Had Ended! ");
-            MissionComplete();
+            WaveComplete();
         }
 
         //waveInfo.text = "Wave " + wave.ToString();
@@ -100,18 +102,18 @@ public class WaveMan : MonoBehaviour
         }
     }
 
-    public void MissionComplete()
+    public void WaveComplete()
     {
-        successEvent.Invoke();
+
         inWave = false;
-        //missionStatusTxt.text = "Mission Complete!";
+        GameManager.Instance.MissionComplete();
+
     }
 
-    public void MissionFailure()
+    public void WaveFailure()
     {
-        failureEvent.Invoke();
-        inWave = false; 
-        //missionStatusTxt.text = "Mission Failure... You failed to protect the base!";
+        inWave = false;
+        GameManager.Instance.MissionFailure();
     }
 
     void SpawnEnemy(Enemy enemyPrefab)
