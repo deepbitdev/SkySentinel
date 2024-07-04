@@ -15,12 +15,8 @@ MonoBehaviour:
   Camera: {fileID: 0}
   ScreenshotConfigs:
   - Name: Custom
-    Width: 2048
-    Height: 512
-    Type: 0
-  - Name: Custom
-    Width: 512
-    Height: 512
+    Width: 360
+    Height: 360
     Type: 0
   Tag: 02_
   AppendTimestamp: 0

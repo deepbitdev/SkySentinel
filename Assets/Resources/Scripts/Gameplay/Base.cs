@@ -71,7 +71,7 @@ public class Base : MonoBehaviour
 
     void Die() {
         died = true;
-        GameManager.Instance.MissionFailure();
+        GameManager.Instance.GameOver();
         StartCoroutine(Explose());
 
         //Decompose(scale.transform);

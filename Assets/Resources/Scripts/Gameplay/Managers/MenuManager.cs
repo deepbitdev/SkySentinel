@@ -16,6 +16,11 @@ public class MenuManager : Singleton<MenuManager>
 
     [Space]
     [Space]
+    [Header("Tutorial Screen")]
+    public UnityEvent tutorialMenu;
+
+    [Space]
+    [Space]
     [Header("Entire Game")]
     public UnityEvent game;
 
@@ -47,6 +52,12 @@ public class MenuManager : Singleton<MenuManager>
     {
         levelSelect.Invoke();
 
+        Time.timeScale = 0f;
+    }
+
+    public void ShowTutorialMenu()
+    {
+        tutorialMenu.Invoke();
         Time.timeScale = 0f;
     }
 

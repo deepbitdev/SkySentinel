@@ -106,14 +106,14 @@ public class WaveMan : MonoBehaviour
     {
 
         inWave = false;
-        GameManager.Instance.MissionComplete();
+        GameManager.Instance.AreaCleared();
 
     }
 
     public void WaveFailure()
     {
         inWave = false;
-        GameManager.Instance.MissionFailure();
+        GameManager.Instance.GameOver();
     }
 
     void SpawnEnemy(Enemy enemyPrefab)

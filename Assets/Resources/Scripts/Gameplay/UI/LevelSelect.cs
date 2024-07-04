@@ -9,25 +9,25 @@ public class LevelSelect : MonoBehaviour
     public void SelectLevelOne()
     {
         WaveMan.inst.SetWaveLimit("LevelOne");
-        MenuManager.Instance.StartGame();
+        MenuManager.Instance.ShowTutorialMenu();
 
     }
 
     public void SelectLevelTwo()
     {
         WaveMan.inst.SetWaveLimit("LevelTwo");
-        MenuManager.Instance.StartGame();
+        MenuManager.Instance.ShowTutorialMenu();
     }
 
     public void SelectLevelThree()
     {
         WaveMan.inst.SetWaveLimit("LevelThree");
-        MenuManager.Instance.StartGame();
+        MenuManager.Instance.ShowTutorialMenu();
     }
 
     public void SelectLevelFour()
     {
         WaveMan.inst.SetWaveLimit("LevelFour");
-        MenuManager.Instance.StartGame();
+        MenuManager.Instance.ShowTutorialMenu();
     }
 }

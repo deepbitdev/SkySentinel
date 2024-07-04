@@ -59,9 +59,23 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    void GameOver()
-    {
 
+    public void AreaCleared()
+    {
+        successEvent.Invoke();
+        Tower.towers.Clear();
+        statusTxt.text = "Area Cleared";
+        gameStatusEvntTxt.text = "You survived all waves";
+        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
+    }
+
+    public void GameOver()
+    {
+        failureEvent.Invoke();
+        Tower.towers.Clear();
+        statusTxt.text = "Defeat";
+        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
+        gameStatusEvntTxt.text = " Defeated at " + WaveMan.inst.wave.ToString();
     }
 
     public void RestartGame()
@@ -71,23 +85,4 @@ public class GameManager : Singleton<GameManager>
         UpdateUI();
 
     }
-
-    public void MissionComplete()
-    {
-        successEvent.Invoke();
-        Tower.towers.Clear();
-        statusTxt.text = "Area Cleared";
-        gameStatusEvntTxt.text = "You survived all waves";
-        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
-    }
-
-    public void MissionFailure()
-    {
-        failureEvent.Invoke();
-        Tower.towers.Clear();
-        statusTxt.text = "Defeat";
-        waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
-        gameStatusEvntTxt.text = " Defeated at " + WaveMan.inst.wave.ToString();
-    }
-
 }
