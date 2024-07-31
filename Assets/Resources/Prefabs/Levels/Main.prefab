@@ -26274,11 +26274,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 3810138920403189964, guid: 9456a4e39472b224d97a2de3ef66db5e, type: 3}
-  - {fileID: 2837142523121952144, guid: ebb05ce0cc1f7344281739da290d439c, type: 3}
-  - {fileID: 1864642784219386973, guid: 5bb2fd24124c7b84f99bc86e26d1ae77, type: 3}
-  - {fileID: 4608973973132373410, guid: 5554f4250ac0fe641bbe2c87f431486e, type: 3}
-  - {fileID: 2930046027051996412, guid: 2c22e8b9b0787b940acf1b25a2f0d2f9, type: 3}
+  - {fileID: 6633606862772098295, guid: 8a0b3bc4b2fd7674f9878975f14ec964, type: 3}
+  - {fileID: 3364168772987579731, guid: 09bf03dc4da336e46a4a5240b222ede3, type: 3}
+  - {fileID: 6205323197543853989, guid: eb0a709735ac9014481db24ba9d2ad66, type: 3}
+  - {fileID: 627767191710714913, guid: 856b81dff135da544a80c43136d94cf9, type: 3}
+  - {fileID: 7574113180364536123, guid: 971cf5ac976209e4b953bc23a614aa0b, type: 3}
   controller: {fileID: 5778880284046331451}
   followingObjectPrefab: {fileID: 5778880284046331451}
 --- !u!1 &7872256692924671524
