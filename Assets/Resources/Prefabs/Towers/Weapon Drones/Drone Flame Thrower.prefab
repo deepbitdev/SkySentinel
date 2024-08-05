@@ -511,10 +511,10 @@ MonoBehaviour:
   upCost: 0
   totDamage: 0
   stats: 
-  view: 1.5
+  view: 0.5
   rotSpeed: 5
   viewAngle: 5
-  anticipation: 0
+  anticipation: 1.4
   rotsY:
   - {fileID: 2971422363778504769}
   - {fileID: 6439713838529766959}
@@ -527,7 +527,7 @@ MonoBehaviour:
   - {fileID: 5126431503717456856}
   - {fileID: 2685179092663588294}
   - {fileID: 1741580214658186993}
-  attDamage: 1
+  attDamage: 2.5
   atts:
   - {fileID: 285486566433642898}
   - {fileID: 5222707431818715467}

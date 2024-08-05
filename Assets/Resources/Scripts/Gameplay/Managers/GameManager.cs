@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -62,6 +63,7 @@ public class GameManager : Singleton<GameManager>
 
     public void AreaCleared()
     {
+        WaveMan.inWave = false;
         successEvent.Invoke();
         Tower.towers.Clear();
         statusTxt.text = "Area Cleared";
@@ -71,6 +73,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
+        WaveMan.inWave = false;
         failureEvent.Invoke();
         Tower.towers.Clear();
         statusTxt.text = "Defeat";
@@ -84,5 +87,15 @@ public class GameManager : Singleton<GameManager>
         enemiesDestroyed = 0;
         UpdateUI();
 
+    }
+
+    public void Reload()
+    {
+        //setTime(1);
+        Enemy.enemies.Clear();
+        Tower.towers.Clear();
+        WaveMan.inWave = false;
+        SessionResultsManager.Instance.ResetResults();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

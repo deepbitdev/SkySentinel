@@ -3013,10 +3013,10 @@ MonoBehaviour:
   upCost: 0
   totDamage: 0
   stats: 
-  view: 1.5
-  rotSpeed: 5
-  viewAngle: 5
-  anticipation: 0
+  view: 1.3
+  rotSpeed: 8
+  viewAngle: 3
+  anticipation: 0.5
   rotsY:
   - {fileID: 5318047646197617396}
   - {fileID: 3354980780195059343}
