@@ -55,17 +55,11 @@ public class GameManager : Singleton<GameManager>
         UpdateUI();
     }
 
-    public void CheckGameOver()
-    {
-
-    }
-
-
     public void AreaCleared()
     {
         WaveMan.inWave = false;
         successEvent.Invoke();
-        Tower.towers.Clear();
+        WeaponSpawner.Instance.ClearDrones();
         statusTxt.text = "Area Cleared";
         gameStatusEvntTxt.text = "You survived all waves";
         waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
@@ -75,7 +69,7 @@ public class GameManager : Singleton<GameManager>
     {
         WaveMan.inWave = false;
         failureEvent.Invoke();
-        Tower.towers.Clear();
+        WeaponSpawner.Instance.ClearDrones();
         statusTxt.text = "Defeat";
         waveTxt.text = "Wave: " + WaveMan.inst.wave.ToString() + " / " + WaveMan.inst.currentWaveLimit.ToString();
         gameStatusEvntTxt.text = " Defeated at " + WaveMan.inst.wave.ToString();

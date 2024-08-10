@@ -46,8 +46,6 @@ public class WaveMan : MonoBehaviour
     void Awake()
     {
         inst = this;
-
-        SetWaveLimit("debug");
     }
 
 

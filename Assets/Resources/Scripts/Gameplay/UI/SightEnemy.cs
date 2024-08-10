@@ -10,7 +10,7 @@ public class SightEnemy : Sight
     public TMP_Text percentText, distText, nameText;
     [HideInInspector] public Enemy target;
 
-    public Crosshair _crosshair;
+    //public Crosshair _crosshair;
 
 
 
@@ -60,7 +60,7 @@ public class SightEnemy : Sight
             percentText.text = (int)(progress * 100) + "%";
             nameText.text = target.name;
             
-            _crosshair.TargetLockColor();
+            //_crosshair.TargetLockColor();
 
             if (!display.active)
             {

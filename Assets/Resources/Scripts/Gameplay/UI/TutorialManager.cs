@@ -7,7 +7,7 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject tutorialPanel;
-    public TextMeshPro tutorialTxt;
+    //public TextMeshPro tutorialTxt;
     public GameObject[] tutorialSteps;
 
     private int currentStep = 0;
@@ -48,6 +48,6 @@ public class TutorialManager : MonoBehaviour
         tutorialSteps[stepIndex].SetActive(true);
 
         // Update text
-        tutorialTxt.text = "Step " + (stepIndex + 1) + ": " + tutorialSteps[stepIndex].name;
+        //tutorialTxt.text = "Step " + (stepIndex + 1) + ": " + tutorialSteps[stepIndex].name;
     }
 }

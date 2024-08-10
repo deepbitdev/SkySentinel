@@ -8595,7 +8595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialPanel: {fileID: 114675089609668422}
-  tutorialTxt: {fileID: 8272169338247098869}
   tutorialSteps:
   - {fileID: 1844802482595337131}
   - {fileID: 3916209711423370154}

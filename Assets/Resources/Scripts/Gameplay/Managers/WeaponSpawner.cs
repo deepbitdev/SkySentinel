@@ -1,10 +1,11 @@
 using Oculus.Interaction.Input;
+using SkySentinel.Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponSpawner : MonoBehaviour
+public class WeaponSpawner : Singleton<WeaponSpawner>
 {
     #region New Functionality with button list
     public GameObject[] objectsToSpawn;
@@ -15,6 +16,8 @@ public class WeaponSpawner : MonoBehaviour
     private GameObject followingObject;
     private bool canSpawn = true;
     private int currentObjectIndex = 0;
+
+    public List<GameObject> objs = new List<GameObject>();
 
     void Start()
     {
@@ -66,6 +69,10 @@ public class WeaponSpawner : MonoBehaviour
         {
             //GameObject newObject = Instantiate(objectsToSpawn[currentObjectIndex], xrController.transform.position, xrController.transform.rotation);
             GameObject newObject = Instantiate(objectsToSpawn[currentObjectIndex], controller.transform.position, controller.transform.rotation);
+
+
+            // Add the spawned objects to a new list 
+            objs.Add( newObject );
 
 
             // Access the TowerBase component on the spawned object
@@ -123,4 +130,16 @@ public class WeaponSpawner : MonoBehaviour
         canSpawn = true;
     }
     #endregion
+
+    public void ClearDrones()
+    {
+        foreach(GameObject obj in objs)
+        {
+            if (objs != null)
+            {
+                Destroy(obj);
+            }
+        }
+        objs.Clear();
+    }
 }

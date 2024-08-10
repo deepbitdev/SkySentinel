@@ -3,6 +3,8 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
+    public static Tower Instance;
+
     public static readonly float COEF_UP = 0.3f;
     public static readonly float COEF_SELL = .9f;
 
@@ -28,9 +30,15 @@ public abstract class Tower : MonoBehaviour
 
 
     protected virtual void Awake() {
+        Instance = this;
         UpdateStats();
         upCost = (int)(COEF_UP * cost);
         towers.Add(this);
+    }
+
+    public virtual void ClearDrones()
+    {
+        towers.Clear();
     }
 
 
