@@ -35,31 +35,31 @@ public class Player : MonoBehaviour
         inst = this;
     }
 
-    void Update()
-    {
+    //void Update()
+    //{
         //UpdateOverload();
 
-        bool currentButtonState = false;
-        InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
+        //bool currentButtonState = false;
+        //InputDevices.GetDeviceAtXRNode(inputSource).TryGetFeatureValue(CommonUsages.triggerButton, out currentButtonState);
 
         
-        if (WaveMan.inWave && !Base.inst.died && currentButtonState && !reload && Time.time > tNextShot)
-        {
-            tNextShot = Time.time + tShot;
-            overload += overloadShot;
+        //if (WaveMan.inWave && !Base.inst.died && currentButtonState && !reload && Time.time > tNextShot)
+        //{
+        //    tNextShot = Time.time + tShot;
+        //    overload += overloadShot;
 
-            ControllerHaptics.instance.ShootingHaptic();
+        //    //ControllerHaptics.instance.ShootingHaptic();
 
 
-            if (overload >= t_overload)
-            {
-                reload = true;
+        //    if (overload >= t_overload)
+        //    {
+        //        reload = true;
 
-                // Add a warning controller haptic event
-            }
+        //        // Add a warning controller haptic event
+        //    }
 
-            Shot();
-        }
+        //    //Shot();
+        //}
 
 
         //if (WaveMan.inWave && !Base.inst.died) {
@@ -93,28 +93,28 @@ public class Player : MonoBehaviour
     //    else overloadBar.color = overloadGradient.Evaluate(progress);
     //}
 
-    void Shot()
-    {
-        Transform camTrans = ProjectMan.inst.cam.transform;
-        float right = 0.03f;
-        if (shotLeft) right *= -1;
-        shotLeft = !shotLeft;
+    //void Shot()
+    //{
+    //    Transform camTrans = ProjectMan.inst.cam.transform;
+    //    float right = 0.03f;
+    //    if (shotLeft) right *= -1;
+    //    shotLeft = !shotLeft;
 
-        Vector3 pos = camTrans.position + right * camTrans.right - 0.015f * camTrans.up;
-        Quaternion rot;
-        if (sight.target != null)
-        {
-            Enemy enemy = sight.target;
-            Vector3 target = enemy.gravity.position;
-            target += enemy.transform.forward * enemy.speed * Tool.Dist(pos, enemy) * 0.28f;
-            rot = Quaternion.LookRotation(Tool.Dir(pos, target, false));
-        }
-        else rot = camTrans.rotation;
-        Bullet bullet = Instantiate(bulletPrefab, pos, rot);
-        AudioSource audio = bullet.GetComponent<AudioSource>();
-        audio.pitch = 1 + 0.6f * Tool.Progress(overload, t_overload);
+    //    Vector3 pos = camTrans.position + right * camTrans.right - 0.015f * camTrans.up;
+    //    Quaternion rot;
+    //    if (sight.target != null)
+    //    {
+    //        Enemy enemy = sight.target;
+    //        Vector3 target = enemy.gravity.position;
+    //        target += enemy.transform.forward * enemy.speed * Tool.Dist(pos, enemy) * 0.28f;
+    //        rot = Quaternion.LookRotation(Tool.Dir(pos, target, false));
+    //    }
+    //    else rot = camTrans.rotation;
+    //    Bullet bullet = Instantiate(bulletPrefab, pos, rot);
+    //    AudioSource audio = bullet.GetComponent<AudioSource>();
+    //    audio.pitch = 1 + 0.6f * Tool.Progress(overload, t_overload);
 
-        // Add controller haptic event for shooting
-    }
-}
+    //    // Add controller haptic event for shooting
+    //}
+//}
 

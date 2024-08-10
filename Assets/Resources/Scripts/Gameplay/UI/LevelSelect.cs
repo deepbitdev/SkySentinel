@@ -1,12 +1,13 @@
+using SkySentinel.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSelect : MonoBehaviour
+public class LevelSelect : Singleton<LevelSelect>
 {
     public GameObject[] visualLevels;
 
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
 
     public void SelectLevelOne()

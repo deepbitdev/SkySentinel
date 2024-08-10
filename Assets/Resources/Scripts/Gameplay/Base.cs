@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using SkySentinel.Core;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Base : MonoBehaviour
+public class Base : Singleton<Base>
 {
     public static Base inst;
     public SmoothTranslate smoothTranslate;
@@ -32,14 +33,6 @@ public class Base : MonoBehaviour
         inst = this;
     }
 
-    void Update()
-    {
-        if(crtLife == 500)
-        {
-            RestoreHealth();
-        }
-    }
-
 
     public void TakeDamage(float damage)
     {
@@ -65,7 +58,7 @@ public class Base : MonoBehaviour
 
     public void RestoreHealth()
     {
-        crtLife += 50;
+        crtLife = life;
     }
 
 

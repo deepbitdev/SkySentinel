@@ -81,6 +81,12 @@ public class GameManager : Singleton<GameManager>
         enemiesDestroyed = 0;
         UpdateUI();
 
+        MenuManager.Instance.StartGame();
+
+        Base.Instance.RestoreHealth();
+
+        ApplyUserSettings();
+
     }
 
     public void Reload()
@@ -91,5 +97,10 @@ public class GameManager : Singleton<GameManager>
         WaveMan.inWave = false;
         SessionResultsManager.Instance.ResetResults();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void ApplyUserSettings()
+    {
+        Debug.Log("Level Selected" + LevelSelect.Instance.currentIndex);
     }
 }
