@@ -27,6 +27,8 @@ public class GameManager : Singleton<GameManager>
     public TextMeshPro waveTxt;
     public TextMeshPro enemiesDestroyedTxt;
 
+
+
     void Start()
     {
         UpdateUI();
@@ -81,12 +83,9 @@ public class GameManager : Singleton<GameManager>
         enemiesDestroyed = 0;
         UpdateUI();
 
-        MenuManager.Instance.StartGame();
-
-        Base.Instance.RestoreHealth();
-
-        ApplyUserSettings();
-
+        
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void Reload()
@@ -97,10 +96,5 @@ public class GameManager : Singleton<GameManager>
         WaveMan.inWave = false;
         SessionResultsManager.Instance.ResetResults();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    void ApplyUserSettings()
-    {
-        Debug.Log("Level Selected" + LevelSelect.Instance.currentIndex);
     }
 }
