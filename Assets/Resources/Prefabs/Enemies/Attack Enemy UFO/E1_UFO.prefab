@@ -157,7 +157,7 @@ MonoBehaviour:
   name: 
   life: 100
   crtLife: 0
-  speed: 0.2
+  speed: 0.1
   money: 30
   gravity: {fileID: 2171875668759396499}
   mr: {fileID: 3717824513248964618}

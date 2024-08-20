@@ -56,8 +56,8 @@ public abstract class Tower : MonoBehaviour
             versions[v].SetActive(true);
         }
 
-        //Shop.inst.AddMoney(-upCost);
-        PlayerManager.instance.AddMoney(upCost);
+        Shop.inst.AddMoney(-upCost);
+        PlayerManager.instance.AddMoney(-upCost);
         cost += upCost;
         upCost = (int)(COEF_UP * cost);
 

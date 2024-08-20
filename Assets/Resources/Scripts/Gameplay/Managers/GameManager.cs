@@ -15,6 +15,12 @@ public class GameManager : Singleton<GameManager>
     [Header("Mission Failure")]
     public UnityEvent failureEvent;
 
+    [Header("Pause Visuals")]
+    public UnityEvent pauseEvent;
+
+    [Header("Resume Visuals")]
+    public UnityEvent resumeEvent;
+
     public int playerScore = 0;
     public int currentWave = 0;
     public int enemiesDestroyed = 0;
@@ -96,5 +102,33 @@ public class GameManager : Singleton<GameManager>
         WaveMan.inWave = false;
         SessionResultsManager.Instance.ResetResults();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ShowPauseMenu()
+    {
+        //isPaused = !isPaused;
+        //// Pause menu event
+
+        //if (isPaused)
+        //{
+        //    Time.timeScale = 0f;
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1f;
+        //}
+
+        Time.timeScale = 0f;
+        pauseEvent.Invoke();
+    }
+
+    public void ResumeGame()
+    {
+        //isPaused = false;
+        // Disable pause display
+        // Enable game UI
+        Time.timeScale = 1f;
+        resumeEvent.Invoke();
+
     }
 }
