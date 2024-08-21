@@ -48,15 +48,15 @@ public class WeaponSpawner : Singleton<WeaponSpawner>
         }
 
 
-        //if (canSpawn && OVRInput.Get(OVRInput.Button.One))
-        //{
-        //    SpawnObject();
-        //    canSpawn = false; // Set flag to prevent rapid spawning, adjust as needed
-        //}
-        //else if (!OVRInput.Get(OVRInput.Button.One) && !canSpawn)
-        //{
-        //    canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
-        //}
+        if (canSpawn && OVRInput.Get(OVRInput.Button.One))
+        {
+            SpawnObject();
+            canSpawn = false; // Set flag to prevent rapid spawning, adjust as needed
+        }
+        else if (!OVRInput.Get(OVRInput.Button.One) && !canSpawn)
+        {
+            canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
+        }
 
 
         UpdateFollowingObjectPosition();

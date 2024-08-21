@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     public Transform laserSpawnPoint;
     public float laserSpeed = 20f;
     public float fireRate = 1f;
-    public float detectionRange = 30f;
+    public float detectionRange;
     private float nextFireTime;
 
     private Transform currentTarget;

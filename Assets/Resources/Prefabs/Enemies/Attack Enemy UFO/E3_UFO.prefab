@@ -4896,10 +4896,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d297c1e06284181bf6835dace5ce74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Plasmafury
   life: 100
   crtLife: 0
-  speed: 0.2
+  speed: 0.045
   money: 30
   gravity: {fileID: 263196334838930515}
   mr: {fileID: 5912125703032302038}
@@ -4920,7 +4920,7 @@ MonoBehaviour:
   laserSpawnPoint: {fileID: 7536181086985774217}
   laserSpeed: 20
   fireRate: 1
-  detectionRange: 7
+  detectionRange: 1
 --- !u!1 &8069132107919996751
 GameObject:
   m_ObjectHideFlags: 0

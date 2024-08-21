@@ -10047,10 +10047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d297c1e06284181bf6835dace5ce74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Razorwing
   life: 100
   crtLife: 0
-  speed: 0.2
+  speed: 0.045
   money: 30
   gravity: {fileID: 4013845685410266197}
   mr: {fileID: 134637033052301713}
@@ -10071,4 +10071,4 @@ MonoBehaviour:
   laserSpawnPoint: {fileID: 7498027430491430785}
   laserSpeed: 20
   fireRate: 1
-  detectionRange: 7
+  detectionRange: 1
