@@ -8027,7 +8027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Place a tower
+  m_text: Deploy Drone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
   m_sharedMaterial: {fileID: -9221056233183343877, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
@@ -8327,8 +8327,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To select a weapon drone, poke one of the icons in front of you that displays
-    the drone weapon type.
+  m_text: To select a weaponized drone, poke one of the icons in front of you that
+    displays the drone's weapon type. Press the 'A' button to deploy the drone.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
@@ -15593,9 +15593,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: After each mission, look at the drone you want to upgrade and press the
-    Y button on the left controller. Each upgrade improves the drone's performance,
-    making it easier to defeat the enemy UFOs attacking the island.
+  m_text: "After each wave, look at the drone you want to upgrade and poke the upgrade
+    button on the left controller. Each upgrade improves the drone\u2019s performance,
+    making it easier to take down the UFOs attacking the island."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
@@ -19847,8 +19847,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: After selecting your weapon drone, poke the "Launch Mission" icon to start
-    the mission.
+  m_text: After deploying your weaponized drone, poke the "Launch Mission" icon to
+    start the mission.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
@@ -25173,8 +25173,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To remove a weaponized drone after a mission, look at the drone and press
-    the X button on the left controller.
+  m_text: After each wave, look at the drone you want to remove and poke the remove
+    button on the left controller.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: dda8d4d183f898241969906ee2a03d81, type: 2}
@@ -31875,7 +31875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove Tower
+  m_text: Remove Drone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
   m_sharedMaterial: {fileID: -9221056233183343877, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
@@ -32519,7 +32519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade Tower
+  m_text: Upgrade Drone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
   m_sharedMaterial: {fileID: -9221056233183343877, guid: a8ff26fc8eee4e64f84d729a22088af5, type: 2}
