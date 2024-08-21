@@ -11,11 +11,12 @@ public class Base : Singleton<Base>
     public SmoothTranslate smoothTranslate;
     //public Hologram hologram;
     public Transform gravity;
-    // public RectTransform lifeRT;
+    public RectTransform lifeRT;
     // public TMP_Text lifePercent;
     // public TMP_Text scoreDead;
     // public Animator bloodyScreen;
     public GameObject exploPrefab, scale;
+
 
     // Misses counter
     public int misses;
@@ -38,9 +39,10 @@ public class Base : Singleton<Base>
     {
         if (!died)
         {
+            
             crtLife = Mathf.Max(0, crtLife - damage);
             float progress = Tool.Progress(crtLife, life);
-            // lifeRT.localScale = new Vector3(progress, 1, 1);
+            lifeRT.localScale = new Vector3(progress, 1, 1);
             // lifePercent.text = (int)(progress * 100) + "%";
             // bloodyScreen.Play("Damage");
             if (crtLife <= 0) Die();
