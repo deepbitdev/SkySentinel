@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager>
     public void AreaCleared()
     {
         WaveMan.inWave = false;
-        successEvent.Invoke();
+        // successEvent.Invoke();
         WeaponSpawner.Instance.ClearDrones();
         statusTxt.text = "Area Cleared";
         gameStatusEvntTxt.text = "You survived all waves";

@@ -8,7 +8,7 @@ public class ShapeGenerator : Singleton<ShapeGenerator>
 
     [SerializeField] private Material defaultMaterial;
 
-    [SerializeField] private PhysicMaterial physicMaterial;
+    [SerializeField] private PhysicsMaterial physicMaterial;
     public void CreateShape() => CreateShape(transform.position, true);
 
     public void CreateShape(Vector3 position, bool randomizeColor = false)

@@ -7,7 +7,7 @@ public class SightTower : Sight
     public static SightTower inst;
 
     public float view = 1;
-    public TMP_Text name, totDamage, distText, stats, upButtText, sellButtText;
+    public TMP_Text name, totDamage, distText, stats;
     [HideInInspector] public Tower target;
     public Color colorUpButtDesable;
     
@@ -17,7 +17,7 @@ public class SightTower : Sight
 
     void Awake()
     {
-        colorUpButt = upButtText.color;
+        // colorUpButt = upButtText.color;
         inst = this;
     }
 
@@ -65,13 +65,13 @@ public class SightTower : Sight
             stats.text = target.stats;
 
             // upButtText.text = "UP:"+ target.upCost + " $ ";
-            upButtText.text = "UPGRADE";
-            if (target.upCost < PlayerManager.instance.money)
-                upButtText.color = colorUpButt;
-            else upButtText.color = colorUpButtDesable;
+            // upButtText.text = "UPGRADE";
+            // if (target.upCost < PlayerManager.instance.money)
+            //     upButtText.color = colorUpButt;
+            // else upButtText.color = colorUpButtDesable;
 
             // sellButtText.text = "SELL:" + (int)(Tower.COEF_SELL * target.cost) + "$";
-            sellButtText.text = "REPLACE";
+            // sellButtText.text = "REPLACE";
 
             if (!display.active)
             {
@@ -94,6 +94,7 @@ public class SightTower : Sight
     }
 
 
+    [ContextMenu("Upgrade")]
     public void UpTower() {
         if (target && PlayerManager.instance.money >= target.upCost) target.Up();
     }

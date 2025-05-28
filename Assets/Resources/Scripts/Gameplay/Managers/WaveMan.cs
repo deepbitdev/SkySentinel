@@ -28,6 +28,9 @@ public class WaveMan : MonoBehaviour
     public static bool inWave = false;
     [HideInInspector] public int wave = 1;
 
+    [Header("Start Wave Editor Test")]
+   
+
 
     private Dictionary<string, int> waveLimits = new Dictionary<string, int>()
     {
@@ -42,6 +45,7 @@ public class WaveMan : MonoBehaviour
     };
 
     public int currentWaveLimit;
+
 
     void Awake()
     {
@@ -77,11 +81,11 @@ public class WaveMan : MonoBehaviour
                 EndWave();
         }
         
-        if (wave >= currentWaveLimit)
-        {
-            Debug.Log(" Wave Event Had Ended! ");
-            WaveComplete();
-        }
+        // if (wave >= currentWaveLimit)
+        // {
+        //     Debug.Log(" Wave Event Had Ended! ");
+        //     WaveComplete();
+        // }
 
         //waveInfo.text = "Wave " + wave.ToString();
         //waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
@@ -104,14 +108,14 @@ public class WaveMan : MonoBehaviour
     {
 
         inWave = false;
-        GameManager.Instance.AreaCleared();
+        // GameManager.Instance.AreaCleared();
 
     }
 
     public void WaveFailure()
     {
         inWave = false;
-        GameManager.Instance.GameOver();
+        // GameManager.Instance.GameOver();
     }
 
     void SpawnEnemy(Enemy enemyPrefab)
@@ -123,6 +127,7 @@ public class WaveMan : MonoBehaviour
         enemy.transform.Translate(Vector3.back * Base.inst.view);
     }
 
+    [ContextMenu("Start Wave")]
     public void StartWave()
     {
         crtMoneyEnemies = moneyTotEnemies;
@@ -130,12 +135,17 @@ public class WaveMan : MonoBehaviour
 
         inWave = true;
         startWaveEvent.Invoke();
+
+        // Enabling drones to fly!
+        AIDroneController.instance.StartFlying();
     }
 
     public void EndWave()
     {
         wave++;
         moneyTotEnemies *= coefCost;
+
+        AIDroneController.instance.StopFlying();
         //waveInfo.text = "Wave " + wave.ToString() + " / " + currentWaveLimit.ToString();
         //waveInfo.text = "Wave " + wave.ToString();
         //waveNumber.text = wave.ToString();

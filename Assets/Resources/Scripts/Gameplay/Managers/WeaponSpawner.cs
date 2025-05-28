@@ -19,6 +19,8 @@ public class WeaponSpawner : Singleton<WeaponSpawner>
 
     public List<GameObject> objs = new List<GameObject>();
 
+
+
     void Start()
     {
         if (objectsToSpawn == null || objectsToSpawn.Length == 0)
@@ -58,9 +60,67 @@ public class WeaponSpawner : Singleton<WeaponSpawner>
             canSpawn = true; // Set flag to prevent rapid spawning, adjust as needed
         }
 
+        // if(!weapon1)
+        // {
+            
+        //     canSpawn = false;
+        // }
+        // else
+        // {
+        //     SpawnObject();
+        //     SwitchObjectToSpawn(0);
+        //     canSpawn = true;
+        // }
+
 
         UpdateFollowingObjectPosition();
     }
+
+    [ContextMenu("Turret Weapon")]
+    public void TurretWeapon()
+    {
+        // Set the currentObjectIndex to the turret weapon index
+        currentObjectIndex = 0;
+        SpawnObject();
+        Debug.Log("Switched to object index: " + currentObjectIndex);
+    }
+
+    [ContextMenu("Radar Weapon")]
+    public void RadarWeapon()
+    {
+        // Set the currentObjectIndex to the turret weapon index
+        currentObjectIndex = 1;
+        SpawnObject();
+        Debug.Log("Switched to object index: " + currentObjectIndex);
+    }
+
+    [ContextMenu("Rocket Weapon")]
+    public void RocketWeapon()
+    {
+        // Set the currentObjectIndex to the turret weapon index
+        currentObjectIndex = 2;
+        SpawnObject();
+        Debug.Log("Switched to object index: " + currentObjectIndex);
+    }
+
+    [ContextMenu("Laser Weapon")]
+    public void LaserWeapon()
+    {
+        // Set the currentObjectIndex to the turret weapon index
+        currentObjectIndex = 3;
+        SpawnObject();
+        Debug.Log("Switched to object index: " + currentObjectIndex);
+    }
+
+    [ContextMenu("Flamethrower Weapon")]
+    public void FTWeapon()
+    {
+        // Set the currentObjectIndex to the turret weapon index
+        currentObjectIndex = 4;
+        SpawnObject();
+        Debug.Log("Switched to object index: " + currentObjectIndex);
+    }
+
 
     public void SpawnObject()
     {

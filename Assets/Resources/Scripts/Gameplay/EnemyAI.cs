@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
             GameObject laser = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
             Rigidbody rb = laser.GetComponent<Rigidbody>();
             //rb.velocity = (currentTarget.position - laserSpawnPoint.position).normalized * laserSpeed;
-            rb.velocity = laserSpawnPoint.forward * laserSpeed;
+            rb.linearVelocity = laserSpawnPoint.forward * laserSpeed;
         }
     }
 }

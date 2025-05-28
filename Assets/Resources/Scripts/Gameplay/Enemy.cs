@@ -68,9 +68,12 @@ public class Enemy : MonoBehaviour
 
     void Die() {
         //Shop.inst.AddMoney(money);
-        GameManager.Instance.AddScore(money);
-        GameManager.Instance.AddEnemiesDestroyed(1);
+        // GameManager.Instance.AddScore(money);
+        // GameManager.Instance.AddEnemiesDestroyed(1);
         //explosion.Play();
+        CurrencyManager.instance.AddSoftCurrency(money);
+        CurrencyManager.instance.AddHardCurrency(100);
+        ScoreManager.instance.AddScore(1000);
         explosion.gameObject.SetActive(true);
         enemies.Remove(this);
         Destroy(gameObject);

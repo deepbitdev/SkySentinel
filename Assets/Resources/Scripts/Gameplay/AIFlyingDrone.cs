@@ -19,7 +19,7 @@ public class AIFlyingDrone : MonoBehaviour
     [Space]
     [Header("Target Info")]
     public Transform target;
-    public float detectionRange = 10f;
+    public float detectionRange;
     public float attackRange = 5f;
     public float speed = 3f;
     public float rotationSpeed = 2f;

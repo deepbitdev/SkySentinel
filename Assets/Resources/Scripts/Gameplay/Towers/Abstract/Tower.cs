@@ -46,6 +46,7 @@ public abstract class Tower : MonoBehaviour
 
 
 
+    [ContextMenu("Sell")]
     public virtual void Up()
     {
         vsub++;
@@ -55,6 +56,8 @@ public abstract class Tower : MonoBehaviour
             v++;
             versions[v].SetActive(true);
         }
+
+        AIDroneController.instance.IncreaseDetectionRadius(1);
 
         Shop.inst.AddMoney(-upCost);
         PlayerManager.instance.AddMoney(-upCost);
