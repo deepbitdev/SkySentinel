@@ -204,7 +204,7 @@ public class GrabMan : MonoBehaviour
         //    }
         //}
 
-        if (!Base.inst.gameObject.active)
+        if (!Base.inst.gameObject.activeSelf)
         {
 
             Base.inst.gameObject.SetActive(true);
@@ -214,7 +214,7 @@ public class GrabMan : MonoBehaviour
         }
 
 
-        if (Base.inst.gameObject.active)
+        if (Base.inst.gameObject.activeSelf)
         {
             initBase = false;
             //Base.inst.hologram.Dissolve();

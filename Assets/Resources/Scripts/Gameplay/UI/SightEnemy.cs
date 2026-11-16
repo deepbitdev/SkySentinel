@@ -62,7 +62,7 @@ public class SightEnemy : Sight
             
             //_crosshair.TargetLockColor();
 
-            if (!display.active)
+            if (!display.activeSelf)
             {
                 rt.sizeDelta = size;
                 rt.position = screenPointTarget;
@@ -78,6 +78,6 @@ public class SightEnemy : Sight
                 rt.position += dp;
             }
         }
-        else if (display.active) display.SetActive(false);
+        else if (display.activeSelf) display.SetActive(false);
     }
 }

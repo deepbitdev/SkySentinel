@@ -25,7 +25,7 @@ public class SmoothTranslate : MonoBehaviour
 
     public void SetTarget(Vector3 target)
     {
-        if (gameObject.active)
+        if (gameObject.activeSelf)
         {
             this.target = target;
             lastPos = transform.position;

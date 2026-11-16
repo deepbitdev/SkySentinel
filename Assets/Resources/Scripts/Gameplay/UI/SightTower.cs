@@ -73,7 +73,7 @@ public class SightTower : Sight
             // sellButtText.text = "SELL:" + (int)(Tower.COEF_SELL * target.cost) + "$";
             // sellButtText.text = "REPLACE";
 
-            if (!display.active)
+            if (!display.activeSelf)
             {
                 rt.sizeDelta = size;
                 rt.position = screenPointTarget;
@@ -90,7 +90,7 @@ public class SightTower : Sight
                 rt.position += dp;
             }
         }
-        else if (display.active) display.SetActive(false);
+        else if (display.activeSelf) display.SetActive(false);
     }
 
 
